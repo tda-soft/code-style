@@ -15,7 +15,7 @@
 ```ruby
 # One line comment
 def foo()
-    ...
+  ...
 end
 
 
@@ -23,7 +23,7 @@ end
 # Section comment (2 spaces above, 1 below)
 
 def foo()
-    ...
+  ...
 end
 
 
@@ -33,7 +33,7 @@ end
 # @param bar: String - description
 # @return Hash - description
 def foo(bar)
-    ...
+  ...
 end
 ```
 * Comment indentation same as code.

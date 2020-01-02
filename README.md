@@ -47,7 +47,7 @@ All of the projects should contain `.gitignore` at the root folder including:
 ### Configurations ###
 /node_modules
 /.idea
-.yarn-integrity
+/.vscode
 .env
 
 ### Compiled source ###

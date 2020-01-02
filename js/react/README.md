@@ -67,7 +67,7 @@ class Example extends React.Component {
 ```
 
 #### 2. propTypes & defaultProps
-<details><summary>Use ES7 version propTypes:</summary>
+<details><summary>Use ES7 version:</summary>
   
 <br>
 <br>
@@ -77,11 +77,11 @@ class Example extends React.Component {
 class Example extends React.Component {
 
   static propTypes = {
-	  ...
+    ...
   }
 	
   static defaultProps = {
-	  ...
+    ...
   }
 
 }
@@ -93,15 +93,15 @@ class Example extends React.Component {
 
 ```js
 class Example extends React.Component {
-	...
+  ...
 }
 
 Example.propTypes = {
-	...
+  ...
 }
 
 Example.defaultProps = {
-	...
+  ...
 }
 ```
 </details>
