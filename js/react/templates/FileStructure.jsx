@@ -7,6 +7,11 @@ import PropTypes from 'prop-types';
 
 export default class ${COMPONENT_NAME} extends React.Component {
 
+	static propTypes = {};
+
+	static defaultProps = {};
+
+
 	////
 	// Lifecycle
 
