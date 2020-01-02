@@ -13,63 +13,12 @@
 * Explicit `window` when you access global scope variables.
 
 #### 1. JSX File Structure
+* See [Example JSX Component Structure](./templates/FileStructure.jsx)
 * The `render` method is always the last method in the class.
 * Remove empty sections / methods.
-
-```js
-class Example extends React.Component {
-
-    static propTypes = {
-        ...
-    }
-    
-    static defaultProps = {
-        ...
-    }
-    
-
-    ////
-    // Lifecycle
-	
-    constructor(props) {
-        super(props);
-
-        // Initial state
-        this.state = {};
-    }
-
-    componentDidMount() { ... }
-
-    componentWillUnmount() { ... }
-    
-    static getDerivedStateFromProps(props, state) { ... }
-
-
-    ////
-    // Methods
-
-
-    ////
-    // Actions
-
-
-    ////
-    // Events
-
-
-    ////
-    // Helpers
-    
-
-    ////
-    // Rendering
-    
-    renderSection() { ... }
-    
-    render() { ... }
-
-}
-```
+* Keep the methods in sections:
+    * Don't place unrelated method in between others.
+    * Don't place you methods at the bottom. 
 
 #### 2. propTypes & defaultProps
 <details><summary>Use ES7 version:</summary>
@@ -110,5 +59,7 @@ Example.defaultProps = {
 }
 ```
 </details>
+
 * Use primitive propTypes (String, Integer, Array, Function).
 * Use Shape for object or array of objects.
+* See React [Typechecking With PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html).
