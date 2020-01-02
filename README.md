@@ -32,6 +32,10 @@ max_line_length = 120
 tab_width = 4
 trim_trailing_whitespace = true
 
+[{*.rb, *.rake}]
+indent_size = 2
+tab_width = 2
+
 
 ##
 # JetBrains Specific

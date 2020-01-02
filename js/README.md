@@ -2,6 +2,7 @@
 
 - [1. Comments](#1-comments)
 - [2. Deprecation](#2-deprecation)
+- [3. Quotes](#3-quotes)
 
 ----
 
@@ -10,6 +11,7 @@
 * ES6+ (ES2015+) - [cheatsheet](https://devhints.io/es6).
 * `camelCase` variable name convention.
 * Classes begin with Capital letter.
+* Every method that return boolean value will start with `is` or `has`.
 
 <br>
 
@@ -46,6 +48,11 @@ function foo(bar) {
 Add `// @deprecated` comment right above the method / class
 
 <br>
+
+#### 3. Quotes
+* By default use single quote (').
+* For extrapolated string use ES6 quote (`).
+* For DOM properties use double quote (").
 
 ## Framework Based Code Styles
 * [React](./react/README.md)

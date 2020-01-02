@@ -7,6 +7,11 @@
 
 ----
 
+#### General
+* Don't use one word as component name (except common components).
+* Container components will end with `Container`.
+* Explicit `window` when you access global scope variables.
+
 #### 1. JSX File Structure
 * The `render` method is always the last method in the class.
 * Remove empty sections / methods.
@@ -105,3 +110,5 @@ Example.defaultProps = {
 }
 ```
 </details>
+* Use primitive propTypes (String, Integer, Array, Function).
+* Use Shape for object or array of objects.
