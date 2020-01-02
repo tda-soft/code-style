@@ -44,13 +44,16 @@ Read more about [EditorConfig](https://editorconfig.org/).
 All of the projects should contain `.gitignore` at the root folder including:
 
 ```
-### Configurations ###
+##
+# Configurations
 /node_modules
 /.idea
 /.vscode
 .env
 
-### Compiled source ###
+
+##
+# Compiled source
 *.com
 *.class
 *.dll
@@ -60,7 +63,9 @@ All of the projects should contain `.gitignore` at the root folder including:
 *.pyc
 *.crx
 
-### Packages ###
+
+##
+# Packages
 *.7z
 *.dmg
 *.gz
@@ -70,12 +75,16 @@ All of the projects should contain `.gitignore` at the root folder including:
 *.tar
 *.zip
 
-### Logs and databases ###
+
+##
+# Logs and databases
 *.log
 yarn-debug.log*
 yarn-error.log*
 
-### OS generated files ###
+
+##
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
