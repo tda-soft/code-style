@@ -35,7 +35,6 @@ trim_trailing_whitespace = true
 
 ##
 # JetBrains Specific
-ij_visual_guides = 100
 ij_wrap_on_typing = false
 ```
 Read more about [EditorConfig](https://editorconfig.org/).
