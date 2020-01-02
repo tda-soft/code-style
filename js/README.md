@@ -48,5 +48,5 @@ Add `// @deprecated` comment right above the method / class
 <br>
 
 ## Framework Based Code Styles
-* [React](./react/code-style.md)
-* [Node JS](./react/code-style.md)
+* [React](./react/README.md)
+* [Node JS](./react/README.md)

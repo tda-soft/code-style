@@ -9,11 +9,11 @@
 ----
 
 ## 1. CodeStyles
-* [JavaScript](./js/code-style.md)
-  * [React](./js/react/code-style.md)
-  * [Node JS](./js/node/code-style.md)
-* [Ruby](./ruby/code-style.md)
-* [SCSS](./scss/code-style.md)
+* [JavaScript](./js/README.md)
+  * [React](./js/react/README.md)
+  * [Node JS](./js/node/README.md)
+* [Ruby](./ruby/README.md)
+* [SCSS](./scss/README.md)
 
 ## 2. EditorConfig
 We use EditorConfig to maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.

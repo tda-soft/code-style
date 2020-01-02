@@ -1,6 +1,6 @@
 ## React Code Styles
 
-**The react code style is extending the [basic JS code style](../code-style.md).**
+**The react code style is extending the [basic JS code style](../README.md).**
 
 - [1. JSX File Structure](#1-jsx-file-structure)
 - [2. propTypes & defaultProps](#2-proptypes--defaultprops)
@@ -67,36 +67,41 @@ class Example extends React.Component {
 ```
 
 #### 2. propTypes & defaultProps
-<details>
-    <summary>Use ES7 version propTypes:</summary>
-    
-    **Good:**
-    ```js
-    class Example extends React.Component {
-    
-        static propTypes = {
-            ...
-        }
-        
-        static defaultProps = {
-            ...
-        }
-    
-    }
-    ```
-        
-    **Bad:**
-    ```js
-    class Example extends React.Component {
-        ...
-    }
-    
-    Example.propTypes = {
-        ...
-    }
-    
-    Example.defaultProps = {
-        ...
-    }
-    ```
+<details><summary>Use ES7 version propTypes:</summary>
+  
+<br>
+<br>
+
+**Good:**
+```js
+class Example extends React.Component {
+
+  static propTypes = {
+	  ...
+  }
+	
+  static defaultProps = {
+	  ...
+  }
+
+}
+```
+
+<br> 
+
+**Bad:**
+
+```js
+class Example extends React.Component {
+	...
+}
+
+Example.propTypes = {
+	...
+}
+
+Example.defaultProps = {
+	...
+}
+```
 </details>
