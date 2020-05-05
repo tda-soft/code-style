@@ -73,5 +73,5 @@ Add `# @deprecated` comment right above the method / class.
 * All API should begin with `v2/`.
 
 #### 7. Translations
-* Don't nest more then 4 indentations.
+* Don't nest more than 4 indentations.
 * Re-use as much as possible.

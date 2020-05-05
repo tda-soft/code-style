@@ -12,9 +12,8 @@ export default class ${COMPONENT_NAME} extends React.Component {
 	static defaultProps = {};
 
 
-	////
+	//
 	// Lifecycle
-
 	constructor(props) {
 		super(props);
 
@@ -23,25 +22,24 @@ export default class ${COMPONENT_NAME} extends React.Component {
 	}
 
 
-	////
+	//
 	// Public Methods
 
 
-	////
+	//
 	// Actions
 
 
-	////
+	//
 	// Events
 
 
-	////
+	//
 	// Helpers
 
 
-	////
+	//
 	// Rendering
-
 	render() {
 		return (
 			<div>

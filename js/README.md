@@ -23,7 +23,7 @@ function foo() {
 }
 
 
-////
+//
 // Section comment (2 spaces above, 1 below)
 
 function foo() {
