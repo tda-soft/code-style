@@ -11,6 +11,7 @@
 ## 1. CodeStyles
 * [JavaScript](./js/README.md)
   * [React](./js/react/README.md)
+  * [MobX](./js/mobx/README.md)
   * [Node JS](./js/node/README.md)
 * [Ruby](./ruby/README.md)
 * [SCSS](./scss/README.md)

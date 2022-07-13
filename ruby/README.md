@@ -2,7 +2,7 @@
 
 - [1. Comments](#1-comments)
 - [2. Deprecation](#2-deprecation)
-- [3. Deprecation](#3-services)
+- [3. Services](#3-services)
 - [4. Quotes](#4-quotes)
 - [5. Tests](#5-tests)
 - [6. Routes](#6-routes)
@@ -28,16 +28,15 @@ def foo()
 end
 
 
-##
-# Section comment (2 spaces above, 1 below)
-
+#
+# Section comment (2 spaces above)
 def foo()
   ...
 end
 
 
 ##
-# Multiline comment - method description (2 spaces above, 0 below)
+# Multiline comment - method description (2 spaces above)
 #
 # @param bar: String - description
 # @return Hash - description
@@ -60,18 +59,21 @@ Add `# @deprecated` comment right above the method / class.
 * Use only double quote (").
 
 #### 5. Tests
-* Naming convention should be `test_{ method name}_should_{ what ever }`.
+* Naming convention should be `test_{ method name }_should_{ do something }`.
 * Ignore `max_line_length` for tests.
 * Each test is divided into those sections:
     * Unit tests:
         * `Prepare`, `Function`, `Assert`.
     * Controller tests / Integration tests:
         * `Prepare`, `Request`, `Assert`.
+* Each method should have 2 types of tests **positive** and **negative**:
+    * Positive tests expect the tested method to succeed - given correct input & permissions.
+    * Negative tests expect the tested method to fail - given invalid input or insufficient permissions
         
 #### 6. Routes
 * All routes should be cascading.
 * All API should begin with `v2/`.
 
 #### 7. Translations
-* Don't nest more than 4 indentations.
+* Don't nest more than 5 indentations.
 * Re-use as much as possible.

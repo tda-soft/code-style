@@ -2,8 +2,9 @@
 
 **The react code style is extending the [basic JS code style](../README.md).**
 
-- [1. JSX File Structure](#1-jsx-file-structure)
-- [2. propTypes & defaultProps](#2-proptypes--defaultprops)
+- [1. Folder Structure](#1-folder-structure)
+- [2. JSX File Structure](#2-jsx-file-structure)
+- [3. propTypes & defaultProps](#3-proptypes--defaultprops)
 
 ----
 
@@ -12,15 +13,21 @@
 * Container components will end with `Container`.
 * Explicit `window` when you access global scope variables.
 
-#### 1. JSX File Structure
+#### 1. Folder Structure
+```
+
+```
+  
+#### 2. JSX File Structure
 * See [Example JSX Component Structure](./templates/FileStructure.jsx)
 * The `render` method is always the last method in the class.
+* The `constructor` method is always the first method in the class.
 * Remove empty sections / methods.
 * Keep the methods in sections:
     * Don't place unrelated method in between others.
-    * Don't place you methods at the bottom. 
+    * Don't place your methods at the bottom. 
 
-#### 2. propTypes & defaultProps
+#### 3. propTypes & defaultProps
 <details><summary>Use ES7 version:</summary>
   
 <br>

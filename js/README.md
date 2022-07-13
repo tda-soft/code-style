@@ -12,6 +12,7 @@
 * `camelCase` variable name convention.
 * Classes begin with Capital letter.
 * Every method that return boolean value will start with `is` or `has`.
+* Use early return pattern whenever possible, [read more](https://medium.com/swlh/return-early-pattern-3d18a41bba8).
 
 <br>
 
@@ -24,8 +25,7 @@ function foo() {
 
 
 //
-// Section comment (2 spaces above, 1 below)
-
+// Section comment (2 spaces above)
 function foo() {
     ...
 }
@@ -56,4 +56,5 @@ Add `// @deprecated` comment right above the method / class
 
 ## Framework Based Code Styles
 * [React](./react/README.md)
-* [Node JS](./react/README.md)
+* [MobX](./mobx/README.md)
+* [Node JS](./node/README.md)

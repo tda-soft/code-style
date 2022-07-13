@@ -23,7 +23,7 @@ export default class ${COMPONENT_NAME} extends React.Component {
 
 
 	//
-	// Public Methods
+	// Getters
 
 
 	//
