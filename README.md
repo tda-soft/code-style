@@ -1,14 +1,27 @@
 # TDA R&D Conventions
 
-- [1. CodeStyles](#1-codestyles)
-- [2. EditorConfig](#2-editorconfig)
-- [3. Git Ignore](#3-git-ignore)
-- [4. Package Details](#4-package-details)
-- [5. Code Linting](#5-code-linting)
+- [1. Naming](#1-naming)
+- [2. Code Styles](#2-code-styles)
+- [3. Editor Config](#3-editor-config)
+- [4. Git Ignore](#4-git-ignore)
+- [5. Package Details](#5-package-details)
+- [6. Code Linting](#6-code-linting)
 
 ----
 
-## 1. CodeStyles
+## 1. Naming
+* Names should be meaningful
+* Avoid slang (eg. `product.remove()` instead of `product.diePlease()` )
+* Avoid abbreviations (eg. `user = User.where(...` instead of `u = User.where(...`)
+* For boolean data use **is** or **has** (eg. `is_valid`)
+
+For variables / constants use **nouns** or short-phrase with **adjectives** that will explain what is stored in that variable.
+
+For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do (eg. `send_data()`).
+
+For class names use **nouns** or short-phrase with **nouns** that will reflect the class (eg. `ReportService`)
+
+## 2. Code Styles
 * [JavaScript](./js/README.md)
   * [React](./js/react/README.md)
   * [MobX](./js/mobx/README.md)
@@ -16,7 +29,7 @@
 * [Ruby](./ruby/README.md)
 * [SCSS](./scss/README.md)
 
-## 2. EditorConfig
+## 3. Editor Config
 We use EditorConfig to maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
 
 Each project should contain `.editorconfig` at the root folder including:
@@ -42,9 +55,9 @@ tab_width = 2
 # JetBrains Specific
 ij_wrap_on_typing = false
 ```
-Read more about [EditorConfig](https://editorconfig.org/).
+Read more about [Editor Config](https://editorconfig.org/).
 
-## 3. Git Ignore
+## 4. Git Ignore
 All of the projects should contain `.gitignore` at the root folder including:
 
 ```
@@ -99,7 +112,7 @@ Thumbs.db
 tmp/
 ```
 
-## 4. Package Details
+## 5. Package Details
 All of the projects Front-End / Backend / Serverless should contain `package.json` at the root folder including:
 
 ```json
@@ -120,5 +133,5 @@ All of the projects Front-End / Backend / Serverless should contain `package.jso
 
 ```
 
-## 5. Code Linting
+## 6. Code Linting
 tbd...

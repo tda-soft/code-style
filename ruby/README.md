@@ -11,12 +11,14 @@
 ----
 
 #### General
-* `underline_case` variable name convention.
+* **underline_case** naming notation.
 * Classes begin with Capital letter.
+* Constants are **UPPER_CASE** notation.
 * 2 space (see editorconfig).
 * Every method that return boolean value will end with `?` - will not update data.
 * Every method that might raise exception will end with `!`.
 * Always use `return` at the end to return value.
+* Use early return pattern whenever possible, [read more](https://medium.com/swlh/return-early-pattern-3d18a41bba8).
 
 <br>
 

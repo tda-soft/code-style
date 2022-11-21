@@ -7,11 +7,10 @@
 ----
 
 #### General
-* Always use strict mode (add `'use strict';` as first line of the *.js, *.jsx file).
 * ES6+ (ES2015+) - [cheatsheet](https://devhints.io/es6).
-* `camelCase` variable name convention.
+* **camelCase** naming notation.
 * Classes begin with Capital letter.
-* Every method that return boolean value will start with `is` or `has`.
+* Constants are **UPPER_CASE** notation.
 * Use early return pattern whenever possible, [read more](https://medium.com/swlh/return-early-pattern-3d18a41bba8).
 
 <br>
