@@ -16,10 +16,16 @@
 * For boolean data use **is** or **has** (eg. `is_valid`)
 
 For variables / constants use **nouns** or short-phrase with **adjectives** that will explain what is stored in that variable.
+(Don't: `uuids`, `flag`, Do: `authorized_used_uuids`, `is_valid`) 
 
 For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do (eg. `send_data()`).
 
 For class names use **nouns** or short-phrase with **nouns** that will reflect the class (eg. `ReportService`)
+
+#### Consistency
+Use the same concept across the codebase, search or ask for commonly use name, for example: `fetchData`, `getData`, `retrieveData` ar all the same concept - we would pick `getData` to remain consistent with our codebase.
+
+More reference about naming convention [read this article](https://medium.com/wix-engineering/naming-convention-8-basic-rules-for-any-piece-of-code-c4c5f65b0c09).
 
 ## 2. Code Styles
 * [JavaScript](./js/README.md)
