@@ -1,143 +1,65 @@
-# TDA R&D Conventions
+# TDA R&D Code Style
 
-- [1. Naming](#1-naming)
-- [2. Code Styles](#2-code-styles)
-- [3. Editor Config](#3-editor-config)
-- [4. Git Ignore](#4-git-ignore)
-- [5. Package Details](#5-package-details)
-- [6. Code Linting](#6-code-linting)
+## Introduction
 
-----
-
-## 1. Naming
-* Names should be meaningful
-* Avoid slang (eg. `product.remove()` instead of `product.diePlease()` )
-* Avoid abbreviations (eg. `user = User.where(...` instead of `u = User.where(...`)
-* For boolean data use **is** or **has** (eg. `is_valid`)
-
-For variables / constants use **nouns** or short-phrase with **adjectives** that will explain what is stored in that variable.
-(Don't: `uuids`, `flag`, Do: `authorized_used_uuids`, `is_valid`) 
-
-For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do (eg. `send_data()`).
-
-For class names use **nouns** or short-phrase with **nouns** that will reflect the class (eg. `ReportService`)
-
-#### Consistency
-Use the same concept across the codebase, search or ask for commonly use name, for example: `fetchData`, `getData`, `retrieveData` ar all the same concept - we would pick `getData` to remain consistent with our codebase.
-
-More reference about naming convention [read this article](https://medium.com/wix-engineering/naming-convention-8-basic-rules-for-any-piece-of-code-c4c5f65b0c09).
-
-## 2. Code Styles
-* [JavaScript](./js/README.md)
-  * [React](./js/react/README.md)
-  * [MobX](./js/mobx/README.md)
-  * [Node JS](./js/node/README.md)
-* [Ruby](./ruby/README.md)
-* [SCSS](./scss/README.md)
-
-## 3. Editor Config
-We use EditorConfig to maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
-
-Each project should contain `.editorconfig` at the root folder including:
-```
-root = true
-
-[*]
-charset = utf-8
-end_of_line = lf
-indent_size = 4
-indent_style = space
-insert_final_newline = false
-max_line_length = 120
-tab_width = 4
-trim_trailing_whitespace = true
-
-[{*.rb, *.rake}]
-indent_size = 2
-tab_width = 2
+This guide defines the coding standards and best practices for all development across all TDA projects. 
+It is designed to ensure code consistency, readability, maintainability, and ease of onboarding for new developers. 
 
 
-##
-# JetBrains Specific
-ij_wrap_on_typing = false
-```
-Read more about [Editor Config](https://editorconfig.org/).
+## Table of Contents
 
-## 4. Git Ignore
-All of the projects should contain `.gitignore` at the root folder including:
-
-```
-##
-# Configurations
-/node_modules
-/.idea
-/.vscode
-.env
-
-
-##
-# Compiled source
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-*.pyc
-*.crx
-
-
-##
-# Packages
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-
-##
-# Logs and databases
-*.log
-yarn-debug.log*
-yarn-error.log*
-
-
-##
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-tmp/
-```
-
-## 5. Package Details
-All of the projects Front-End / Backend / Serverless should contain `package.json` at the root folder including:
-
-```json
-{
-    "name": "@tda-soft/{ project-name }",
-    "version": "1.0.0",
-    "description": "TDA Soft - { Project description }",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/tda-soft/{ project }.git"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
-    "author": "TDA Soft Ltd.",
-    "license": "ISC"
-}
-
-```
-
-## 6. Code Linting
-tbd...
+1. [General Principles](./sections/general-principles.md)
+    - Naming
+    - Consistency
+    - Code Duplication
+1. [Ruby on Rails](./sections/ruby-on-rails.md)
+    - Whitespace
+    - Line Length
+    - Commenting
+    - Methods
+    - Conditional Expressions
+    - Syntax
+    - Naming
+    - Classes
+    - Exceptions
+    - Collections
+    - Strings
+    - Regular Expressions
+    - Percent Literals
+    - Rails
+    - Consistency
+1. [JavaScript](./sections/javascript.md)
+    - Syntax and ES6+
+    - Variables and Constants
+    - Functions and Arrow Functions
+    - Promises and Async/Await
+    - Modules and Imports
+    - Destructuring
+1. [React.js](./sections/react.md)
+    - Functional Components
+    - Hooks
+    - State Management
+    - Component Composition
+    - Props and Type Checking
+    - Styling Conventions
+    - Folder Structure
+    - Code Examples
+1. [Testing Standards](./sections/testing.md)
+    - Rails: Minitest
+    - JavaScript/React: Jest, React Testing Library
+    - Snapshot Testing
+    - Example Test Cases
+1. [Security and Performance](./sections/security-performance.md)
+    - Rails Security
+    - Query Optimization
+    - React Performance Best Practices
+    - Lazy Loading and Code Splitting
+1. [Git Practices](./sections/git-practices.md)
+    - Branching Strategy
+    - Commit Message Format
+    - Pull Request Process
+    - Code Review Guidelines
+    - Git Ignore
+1. [Other](./sections/other.md)
+    - Package Details
+    - Editor Config

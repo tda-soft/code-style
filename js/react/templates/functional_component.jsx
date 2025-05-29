@@ -10,7 +10,9 @@ const MODE = {
 
 // Store
 export default function COMPONENT_NAME(props) {
-    const { t } = I18n
+    const { t } = I18n;
+
+    /** Refs */
 
     /** State */
     const [mode, setMode] = useState(MODE.DEFAULT)
@@ -28,7 +30,7 @@ export default function COMPONENT_NAME(props) {
 
     }
 
-    /** Events */
+    /** Callbacks */
     function onClick() {
 
     }
