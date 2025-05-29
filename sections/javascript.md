@@ -24,9 +24,7 @@
 1. [Type Casting & Coercion](#type-casting--coercion)
 1. [Naming Conventions](#naming-conventions)
 1. [Accessors](#accessors)
-1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
-1. [ECMAScript 6+ (ES 2015+) Styles](#ecmascript-6-es-2015-styles)
-1. [Standard Library](#standard-library)
+
 
 ## Objects
 
@@ -169,10 +167,11 @@
   const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
   ```
 
+
 ## Arrays
 
-<a name="arrays--literals"></a><a name="4.1"></a>
-- [4.1](#arrays--literals) Use the literal syntax for array creation. eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+* <a name="arrays--literals"></a>Use the literal syntax for array creation. eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+  <sup>[[link](#arrays--literals)]</sup>
 
   ```javascript
   // bad
@@ -182,8 +181,8 @@
   const items = [];
   ```
 
-<a name="arrays--push"></a><a name="4.2"></a>
-- [4.2](#arrays--push) Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
+* <a name="arrays--push"></a>Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
+  <sup>[[link](#arrays--push)]</sup>
 
   ```javascript
   const someStack = [];
@@ -195,8 +194,8 @@
   someStack.push('abracadabra');
   ```
 
-<a name="es6-array-spreads"></a><a name="4.3"></a>
-- [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays.
+* <a name="es6-array-spreads"></a>Use array spreads `...` to copy arrays.
+  <sup>[[link](#es6-array-spreads)]</sup>
 
   ```javascript
   // bad
@@ -212,22 +211,8 @@
   const itemsCopy = [...items];
   ```
 
-<a name="arrays--from"></a>
-<a name="arrays--from-iterable"></a><a name="4.4"></a>
-- [4.4](#arrays--from-iterable) To convert an iterable object to an array, use spreads `...` instead of [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
-
-  ```javascript
-  const foo = document.querySelectorAll('.foo');
-
-  // good
-  const nodes = Array.from(foo);
-
-  // best
-  const nodes = [...foo];
-  ```
-
-<a name="arrays--from-array-like"></a>
-- [4.5](#arrays--from-array-like) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array.
+* <a name="arrays--from-array-like"></a>Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array.
+  <sup>[[link](#arrays--from-array-like)]</sup>
 
   ```javascript
   const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
@@ -239,19 +224,8 @@
   const arr = Array.from(arrLike);
   ```
 
-<a name="arrays--mapping"></a>
-- [4.6](#arrays--mapping) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables, because it avoids creating an intermediate array.
-
-  ```javascript
-  // bad
-  const baz = [...foo].map(bar);
-
-  // good
-  const baz = Array.from(foo, bar);
-  ```
-
-<a name="arrays--callback-return"></a><a name="4.5"></a>
-- [4.7](#arrays--callback-return) Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+* <a name="arrays--callback-return"></a>Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+  <sup>[[link](#arrays--callback-return)]</sup>
 
   ```javascript
   // good
@@ -295,8 +269,8 @@
   });
   ```
 
-<a name="arrays--bracket-newline"></a>
-- [4.8](#arrays--bracket-newline) Use line breaks after opening array brackets and before closing array brackets, if an array has multiple lines
+* <a name="arrays--bracket-newline"></a>Use line breaks after opening array brackets and before closing array brackets, if an array has multiple lines
+  <sup>[[link](#arrays--bracket-newline)]</sup>
 
   ```javascript
   // bad
@@ -333,12 +307,11 @@
   ```
 
 
-
 ## Destructuring
 
-<a name="destructuring--object"></a><a name="5.1"></a>
-- [5.1](#destructuring--object) Use object destructuring when accessing and using multiple properties of an object. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
-
+* <a name="destructuring--object"></a>Use object destructuring when accessing and using multiple properties of an object. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+  <sup>[[link](#destructuring--object)]</sup>
+  
   > Why? Destructuring saves you from creating temporary references for those properties, and from repetitive access of the object. Repeating object access creates more repetitive code, requires more reading, and creates more opportunities for mistakes. Destructuring objects also provides a single site of definition of the object structure that is used in the block, rather than requiring reading the entire block to determine what is used.
 
   ```javascript
@@ -362,8 +335,8 @@
   }
   ```
 
-<a name="destructuring--array"></a><a name="5.2"></a>
-- [5.2](#destructuring--array) Use array destructuring. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+* <a name="destructuring--array"></a>Use array destructuring. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+  <sup>[[link](#destructuring--array)]</sup>
 
   ```javascript
   const arr = [1, 2, 3, 4];
@@ -376,37 +349,11 @@
   const [first, second] = arr;
   ```
 
-<a name="destructuring--object-over-array"></a><a name="5.3"></a>
-- [5.3](#destructuring--object-over-array) Use object destructuring for multiple return values, not array destructuring.
-
-  > Why? You can add new properties over time or change the order of things without breaking call sites.
-
-  ```javascript
-  // bad
-  function processInput(input) {
-    // then a miracle occurs
-    return [left, right, top, bottom];
-  }
-
-  // the caller needs to think about the order of return data
-  const [left, __, top] = processInput(input);
-
-  // good
-  function processInput(input) {
-    // then a miracle occurs
-    return { left, right, top, bottom };
-  }
-
-  // the caller selects only the data they need
-  const { left, top } = processInput(input);
-  ```
-
-
 
 ## Strings
 
-<a name="strings--quotes"></a><a name="6.1"></a>
-- [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
+* <a name="strings--quotes"></a>Use single quotes `''` for strings. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
+  <sup>[[link](#strings--quotes)]</sup>
 
   ```javascript
   // bad
@@ -419,8 +366,8 @@
   const name = 'Capt. Janeway';
   ```
 
-<a name="strings--line-length"></a><a name="6.2"></a>
-- [6.2](#strings--line-length) Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+* <a name="strings--line-length"></a>Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+  <sup>[[link](#strings--line-length)]</sup>
 
   > Why? Broken strings are painful to work with and make code less searchable.
 
@@ -440,9 +387,9 @@
   const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
   ```
 
-<a name="es6-template-literals"></a><a name="6.4"></a>
-- [6.3](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
-
+* <a name="es6-template-literals"></a>When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
+  <sup>[[link](#es6-template-literals)]</sup>
+  
   > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
 
   ```javascript
@@ -467,11 +414,11 @@
   }
   ```
 
-<a name="strings--eval"></a><a name="6.5"></a>
-- [6.4](#strings--eval) Never use `eval()` on a string; it opens too many vulnerabilities. eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
+* <a name="strings--eval"></a>Never use `eval()` on a string; it opens too many vulnerabilities. eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
+  <sup>[[link](#strings--eval)]</sup>
 
-<a name="strings--escaping"></a>
-- [6.5](#strings--escaping) Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+* <a name="strings--escaping"></a>Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+  <sup>[[link](#strings--escaping)]</sup>
 
   > Why? Backslashes harm readability, thus they should only be present when necessary.
 
@@ -485,34 +432,10 @@
   ```
 
 
-
 ## Functions
 
-<a name="functions--declarations"></a><a name="7.1"></a>
-- [7.1](#functions--declarations) Use named function expressions instead of function declarations. eslint: [`func-style`](https://eslint.org/docs/rules/func-style), [`func-names`](https://eslint.org/docs/latest/rules/func-names)
-
-  > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
-
-  ```javascript
-  // bad
-  function foo() {
-    // ...
-  }
-
-  // bad
-  const foo = function () {
-    // ...
-  };
-
-  // good
-  // lexical name distinguished from the variable-referenced invocation(s)
-  const short = function longUniqueMoreDescriptiveLexicalFoo() {
-    // ...
-  };
-  ```
-
-<a name="functions--iife"></a><a name="7.2"></a>
-- [7.2](#functions--iife) Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife)
+* <a name="functions--iife"></a>Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife)
+  <sup>[[link](#functions--iife)]</sup>
 
   > Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
 
@@ -523,11 +446,11 @@
   }());
   ```
 
-<a name="functions--in-blocks"></a><a name="7.3"></a>
-- [7.3](#functions--in-blocks) Never declare a function in a non-function block (`if`, `while`, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func)
+* <a name="functions--in-blocks"></a>Avoid declaring a function in a non-function block (`if`, `while`, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func)
+  <sup>[[link](#functions--in-blocks)]</sup>
 
-<a name="functions--note-on-blocks"></a><a name="7.4"></a>
-- [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.
+* <a name="functions--note-on-blocks"></a>**Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.
+  <sup>[[link](#functions--note-on-blocks)]</sup>
 
   ```javascript
   // bad
@@ -546,8 +469,8 @@
   }
   ```
 
-<a name="functions--arguments-shadow"></a><a name="7.5"></a>
-- [7.5](#functions--arguments-shadow) Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+* <a name="functions--arguments-shadow"></a>Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  <sup>[[link](#functions--arguments-shadow)]</sup>
 
   ```javascript
   // bad
@@ -561,8 +484,8 @@
   }
   ```
 
-<a name="es6-rest"></a><a name="7.6"></a>
-- [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
+* <a name="es6-rest"></a>Avoid use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
+  <sup>[[link](#es6-rest)]</sup>
 
   > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
 
@@ -579,8 +502,8 @@
   }
   ```
 
-<a name="es6-default-parameters"></a><a name="7.7"></a>
-- [7.7](#es6-default-parameters) Use default parameter syntax rather than mutating function arguments.
+* <a name="es6-default-parameters"></a>Use default parameter syntax rather than mutating function arguments.
+  <sup>[[link](#es6-default-parameters)]</sup>
 
   ```javascript
   // really bad
@@ -605,26 +528,8 @@
     // ...
   }
   ```
-
-<a name="functions--default-side-effects"></a><a name="7.8"></a>
-- [7.8](#functions--default-side-effects) Avoid side effects with default parameters.
-
-  > Why? They are confusing to reason about.
-
-  ```javascript
-  let b = 1;
-  // bad
-  function count(a = b++) {
-    console.log(a);
-  }
-  count();  // 1
-  count();  // 2
-  count(3); // 3
-  count();  // 3
-  ```
-
-<a name="functions--defaults-last"></a><a name="7.9"></a>
-- [7.9](#functions--defaults-last) Always put default parameters last. eslint: [`default-param-last`](https://eslint.org/docs/rules/default-param-last)
+* <a name="functions--defaults-last"></a>Always put default parameters last. eslint: [`default-param-last`](https://eslint.org/docs/rules/default-param-last)
+  <sup>[[link](#functions--defaults-last)]</sup>
 
   ```javascript
   // bad
@@ -638,21 +543,8 @@
   }
   ```
 
-<a name="functions--constructor"></a><a name="7.10"></a>
-- [7.10](#functions--constructor) Never use the Function constructor to create a new function. eslint: [`no-new-func`](https://eslint.org/docs/rules/no-new-func)
-
-  > Why? Creating a function in this way evaluates a string similarly to `eval()`, which opens vulnerabilities.
-
-  ```javascript
-  // bad
-  const add = new Function('a', 'b', 'return a + b');
-
-  // still bad
-  const subtract = Function('a', 'b', 'return a - b');
-  ```
-
-<a name="functions--signature-spacing"></a><a name="7.11"></a>
-- [7.11](#functions--signature-spacing) Spacing in a function signature. eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+* <a name="functions--signature-spacing"></a>Spacing in a function signature. eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+  <sup>[[link](#functions--signature-spacing)]</sup>
 
   > Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
 
@@ -667,10 +559,8 @@
   const y = function a() {};
   ```
 
-<a name="functions--mutate-params"></a><a name="7.12"></a>
-- [7.12](#functions--mutate-params) Never mutate parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
-
-  > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
+* <a name="functions--mutate-params"></a>Never mutate parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
+  <sup>[[link](#functions--mutate-params)]</sup>
 
   ```javascript
   // bad
@@ -684,9 +574,9 @@
   }
   ```
 
-<a name="functions--reassign-params"></a><a name="7.13"></a>
-- [7.13](#functions--reassign-params) Never reassign parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
-
+* <a name="functions--reassign-params"></a>Never reassign parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
+  <sup>[[link](#functions--reassign-params)]</sup>
+  
   > Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
 
   ```javascript
@@ -712,10 +602,8 @@
   }
   ```
 
-<a name="functions--spread-vs-apply"></a><a name="7.14"></a>
-- [7.14](#functions--spread-vs-apply) Prefer the use of the spread syntax `...` to call variadic functions. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
-
-  > Why? It’s cleaner, you don’t need to supply a context, and you can not easily compose `new` with `apply`.
+* <a name="functions--spread-vs-apply"></a>Prefer the use of the spread syntax `...` to call variadic functions. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+  <sup>[[link](#functions--spread-vs-apply)]</sup>
 
   ```javascript
   // bad
@@ -733,8 +621,8 @@
   new Date(...[2016, 8, 5]);
   ```
 
-<a name="functions--signature-invocation-indentation"></a>
-- [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+* <a name="functions--signature-invocation-indentation"></a>Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+  <sup>[[link](#functions--signature-invocation-indentation)]</sup>
 
   ```javascript
   // bad
@@ -748,7 +636,7 @@
   function foo(
     bar,
     baz,
-    quux,
+    quux
   ) {
     // ...
   }
@@ -767,11 +655,10 @@
   ```
 
 
-
 ## Arrow Functions
 
-<a name="arrows--use-them"></a><a name="8.1"></a>
-- [8.1](#arrows--use-them) When you must use an anonymous function (as when passing an inline callback), use arrow function notation. eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+* <a name="arrows--use-them"></a>Use arrow function notation for anonymous functions (as when passing an inline callback). eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+  <sup>[[link](#arrows--use-them)]</sup>
 
   > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 
@@ -791,8 +678,8 @@
   });
   ```
 
-<a name="arrows--implicit-return"></a><a name="8.2"></a>
-- [8.2](#arrows--implicit-return) If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
+* <a name="arrows--implicit-return"></a>If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
+  <sup>[[link](#arrows--implicit-return)]</sup>
 
   > Why? Syntactic sugar. It reads well when multiple functions are chained together.
 
@@ -836,8 +723,8 @@
   });
   ```
 
-<a name="arrows--paren-wrap"></a><a name="8.3"></a>
-- [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+* <a name="arrows--paren-wrap"></a>In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+  <sup>[[link](#arrows--paren-wrap)]</sup>
 
   > Why? It shows clearly where the function starts and ends.
 
@@ -858,43 +745,19 @@
   ));
   ```
 
-<a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-- [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
-
-  > Why? Minimizes diff churn when adding or removing arguments.
+* <a name="arrows--one-arg-parens"></a>Avoid parentheses around single argument for clarity and consistency. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
+  <sup>[[link](#arrows--one-arg-parens)]</sup>
 
   ```javascript
   // bad
-  [1, 2, 3].map(x => x * x);
-
-  // good
   [1, 2, 3].map((x) => x * x);
 
-  // bad
-  [1, 2, 3].map(number => (
-    `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
-  ));
-
   // good
-  [1, 2, 3].map((number) => (
-    `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
-  ));
-
-  // bad
-  [1, 2, 3].map(x => {
-    const y = x + 1;
-    return x * y;
-  });
-
-  // good
-  [1, 2, 3].map((x) => {
-    const y = x + 1;
-    return x * y;
-  });
+  [1, 2, 3].map(x => x * x);
   ```
 
-<a name="arrows--confusing"></a><a name="8.5"></a>
-- [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
+* <a name="arrows--confusing"></a>Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
+  <sup>[[link](#arrows--confusing)]</sup>
 
   ```javascript
   // bad
@@ -913,31 +776,11 @@
   };
   ```
 
-<a name="whitespace--implicit-arrow-linebreak"></a>
-- [8.6](#whitespace--implicit-arrow-linebreak) Enforce the location of arrow function bodies with implicit returns. eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
-
-  ```javascript
-  // bad
-  (foo) =>
-    bar;
-
-  (foo) =>
-    (bar);
-
-  // good
-  (foo) => bar;
-  (foo) => (bar);
-  (foo) => (
-     bar
-  )
-  ```
-
-
 
 ## Classes & Constructors
 
-<a name="constructors--use-class"></a><a name="9.1"></a>
-- [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
+* <a name="constructors--use-class"></a>Always use `class`. Avoid manipulating `prototype` directly.
+  <sup>[[link](#constructors--use-class)]</sup>
 
   > Why? `class` syntax is more concise and easier to reason about.
 
@@ -950,13 +793,14 @@
     const value = this.queue[0];
     this.queue.splice(0, 1);
     return value;
-  };
+  }
 
   // good
   class Queue {
     constructor(contents = []) {
       this.queue = [...contents];
     }
+  
     pop() {
       const value = this.queue[0];
       this.queue.splice(0, 1);
@@ -965,140 +809,8 @@
   }
   ```
 
-<a name="constructors--extends"></a><a name="9.2"></a>
-- [9.2](#constructors--extends) Use `extends` for inheritance.
-
-  > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
-
-  ```javascript
-  // bad
-  const inherits = require('inherits');
-  function PeekableQueue(contents) {
-    Queue.apply(this, contents);
-  }
-  inherits(PeekableQueue, Queue);
-  PeekableQueue.prototype.peek = function () {
-    return this.queue[0];
-  };
-
-  // good
-  class PeekableQueue extends Queue {
-    peek() {
-      return this.queue[0];
-    }
-  }
-  ```
-
-<a name="constructors--chaining"></a><a name="9.3"></a>
-- [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
-
-  ```javascript
-  // bad
-  Jedi.prototype.jump = function () {
-    this.jumping = true;
-    return true;
-  };
-
-  Jedi.prototype.setHeight = function (height) {
-    this.height = height;
-  };
-
-  const luke = new Jedi();
-  luke.jump(); // => true
-  luke.setHeight(20); // => undefined
-
-  // good
-  class Jedi {
-    jump() {
-      this.jumping = true;
-      return this;
-    }
-
-    setHeight(height) {
-      this.height = height;
-      return this;
-    }
-  }
-
-  const luke = new Jedi();
-
-  luke.jump()
-    .setHeight(20);
-  ```
-
-<a name="constructors--tostring"></a><a name="9.4"></a>
-- [9.4](#constructors--tostring) It’s okay to write a custom `toString()` method, just make sure it works successfully and causes no side effects.
-
-  ```javascript
-  class Jedi {
-    constructor(options = {}) {
-      this.name = options.name || 'no name';
-    }
-
-    getName() {
-      return this.name;
-    }
-
-    toString() {
-      return `Jedi - ${this.getName()}`;
-    }
-  }
-  ```
-
-<a name="constructors--no-useless"></a><a name="9.5"></a>
-- [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
-
-  ```javascript
-  // bad
-  class Jedi {
-    constructor() {}
-
-    getName() {
-      return this.name;
-    }
-  }
-
-  // bad
-  class Rey extends Jedi {
-    constructor(...args) {
-      super(...args);
-    }
-  }
-
-  // good
-  class Rey extends Jedi {
-    constructor(...args) {
-      super(...args);
-      this.name = 'Rey';
-    }
-  }
-  ```
-
-<a name="classes--no-duplicate-members"></a>
-- [9.6](#classes--no-duplicate-members) Avoid duplicate class members. eslint: [`no-dupe-class-members`](https://eslint.org/docs/rules/no-dupe-class-members)
-
-  > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
-
-  ```javascript
-  // bad
-  class Foo {
-    bar() { return 1; }
-    bar() { return 2; }
-  }
-
-  // good
-  class Foo {
-    bar() { return 1; }
-  }
-
-  // good
-  class Foo {
-    bar() { return 2; }
-  }
-  ```
-
-<a name="classes--methods-use-this"></a>
-- [9.7](#classes--methods-use-this) Class methods should use `this` or be made into a static method unless an external library or framework requires using specific non-static methods. Being an instance method should indicate that it behaves differently based on properties of the receiver. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
+* <a name="classes--methods-use-this"></a>Class methods should use `this` or be made into a static method unless an external library or framework requires using specific non-static methods. Being an instance method should indicate that it behaves differently based on properties of the receiver. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
+  <sup>[[link](#classes--methods-use-this)]</sup>
 
   ```javascript
   // bad
@@ -1131,61 +843,23 @@
   ```
 
 
-
 ## Modules
 
-<a name="modules--use-them"></a><a name="10.1"></a>
-- [10.1](#modules--use-them) Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
-
-  > Why? Modules are the future, let’s start using the future now.
-
+* <a name="modules--use-them"></a>Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  <sup>[[link](#modules--use-them)]</sup>
+  
   ```javascript
   // bad
   const AirbnbStyleGuide = require('./AirbnbStyleGuide');
   module.exports = AirbnbStyleGuide.es6;
 
-  // ok
+  // good
   import AirbnbStyleGuide from './AirbnbStyleGuide';
   export default AirbnbStyleGuide.es6;
-
-  // best
-  import { es6 } from './AirbnbStyleGuide';
-  export default es6;
   ```
 
-<a name="modules--no-wildcard"></a><a name="10.2"></a>
-- [10.2](#modules--no-wildcard) Do not use wildcard imports.
-
-  > Why? This makes sure you have a single default export.
-
-  ```javascript
-  // bad
-  import * as AirbnbStyleGuide from './AirbnbStyleGuide';
-
-  // good
-  import AirbnbStyleGuide from './AirbnbStyleGuide';
-  ```
-
-<a name="modules--no-export-from-import"></a><a name="10.3"></a>
-- [10.3](#modules--no-export-from-import) And do not export directly from an import.
-
-  > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
-
-  ```javascript
-  // bad
-  // filename es6.js
-  export { es6 as default } from './AirbnbStyleGuide';
-
-  // good
-  // filename es6.js
-  import { es6 } from './AirbnbStyleGuide';
-  export default es6;
-  ```
-
-<a name="modules--no-duplicate-imports"></a>
-- [10.4](#modules--no-duplicate-imports) Only import from a path in one place.
-  eslint: [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
-  > Why? Having multiple lines that import from the same path can make code harder to maintain.
+* <a name="modules--no-duplicate-imports"></a>Only import from a path in one place. eslint: [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
+  <sup>[[link](#modules--no-duplicate-imports)]</sup>
 
   ```javascript
   // bad
@@ -1203,10 +877,8 @@
   } from 'foo';
   ```
 
-<a name="modules--no-mutable-exports"></a>
-- [10.5](#modules--no-mutable-exports) Do not export mutable bindings.
-  eslint: [`import/no-mutable-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
-  > Why? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
+* <a name="modules--no-mutable-exports"></a>Do not export mutable bindings. eslint: [`import/no-mutable-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
+  <sup>[[link](#modules--no-mutable-exports)]</sup>
 
   ```javascript
   // bad
@@ -1218,10 +890,8 @@
   export { foo };
   ```
 
-<a name="modules--prefer-default-export"></a>
-- [10.6](#modules--prefer-default-export) In modules with a single export, prefer default export over named export.
-  eslint: [`import/prefer-default-export`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
-  > Why? To encourage more files that only ever export one thing, which is better for readability and maintainability.
+* <a name="modules--prefer-default-export"></a>In modules with a single export, prefer default export over named export. eslint: [`import/prefer-default-export`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
+  <sup>[[link](#modules--prefer-default-export)]</sup>
 
   ```javascript
   // bad
@@ -1231,10 +901,8 @@
   export default function foo() {}
   ```
 
-<a name="modules--imports-first"></a>
-- [10.7](#modules--imports-first) Put all `import`s above non-import statements.
-  eslint: [`import/first`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/first.md)
-  > Why? Since `import`s are hoisted, keeping them all at the top prevents surprising behavior.
+* <a name="modules--imports-first"></a>Put all `import`s above all other code.
+  <sup>[[link](#modules--imports-first)]</sup>
 
   ```javascript
   // bad
@@ -1250,11 +918,8 @@
   foo.init();
   ```
 
-<a name="modules--multiline-imports-over-newlines"></a>
-- [10.8](#modules--multiline-imports-over-newlines) Multiline imports should be indented just like multiline array and object literals.
-  eslint: [`object-curly-newline`](https://eslint.org/docs/rules/object-curly-newline)
-
-  > Why? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas.
+* <a name="modules--multiline-imports-over-newlines"></a>Multiline imports should be indented just like multiline array and object literals. eslint: [`object-curly-newline`](https://eslint.org/docs/rules/object-curly-newline)
+  <sup>[[link](#modules--multiline-imports-over-newlines)]</sup>
 
   ```javascript
   // bad
@@ -1270,10 +935,8 @@
   } from 'path';
   ```
 
-<a name="modules--no-webpack-loader-syntax"></a>
-- [10.9](#modules--no-webpack-loader-syntax) Disallow Webpack loader syntax in module import statements.
-  eslint: [`import/no-webpack-loader-syntax`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
-  > Why? Since using Webpack syntax in the imports couples the code to a module bundler. Prefer using the loader syntax in `webpack.config.js`.
+* <a name="modules--no-webpack-loader-syntax"></a>Disallow Webpack loader syntax in module import statements. eslint: [`import/no-webpack-loader-syntax`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
+  <sup>[[link](#modules--no-webpack-loader-syntax)]</sup>
 
   ```javascript
   // bad
@@ -1285,10 +948,8 @@
   import barCss from 'bar.css';
   ```
 
-<a name="modules--import-extensions"></a>
-- [10.10](#modules--import-extensions) Do not include JavaScript filename extensions
-  eslint: [`import/extensions`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/extensions.md)
-  > Why? Including extensions inhibits refactoring, and inappropriately hardcodes implementation details of the module you're importing in every consumer.
+* <a name="modules--import-extensions"></a>Do not include JavaScript filename extensions. eslint: [`import/extensions`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/extensions.md)
+  <sup>[[link](#modules--import-extensions)]</sup>
 
   ```javascript
   // bad
@@ -1303,11 +964,10 @@
   ```
 
 
-
 ## Iterators and Generators
 
-<a name="iterators--nope"></a><a name="11.1"></a>
-- [11.1](#iterators--nope) Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
+* <a name="iterators--nope"></a>Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
+  <sup>[[link](#iterators--nope)]</sup>
 
   > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
 
@@ -1350,78 +1010,11 @@
   const increasedByOne = numbers.map((num) => num + 1);
   ```
 
-<a name="generators--nope"></a><a name="11.2"></a>
-- [11.2](#generators--nope) Don’t use generators for now.
-
-  > Why? They don’t transpile well to ES5.
-
-<a name="generators--spacing"></a>
-- [11.3](#generators--spacing) If you must use generators, or if you disregard [our advice](#generators--nope), make sure their function signature is spaced properly. eslint: [`generator-star-spacing`](https://eslint.org/docs/rules/generator-star-spacing)
-
-  > Why? `function` and `*` are part of the same conceptual keyword - `*` is not a modifier for `function`, `function*` is a unique construct, different from `function`.
-
-  ```javascript
-  // bad
-  function * foo() {
-    // ...
-  }
-
-  // bad
-  const bar = function * () {
-    // ...
-  };
-
-  // bad
-  const baz = function *() {
-    // ...
-  };
-
-  // bad
-  const quux = function*() {
-    // ...
-  };
-
-  // bad
-  function*foo() {
-    // ...
-  }
-
-  // bad
-  function *foo() {
-    // ...
-  }
-
-  // very bad
-  function
-  *
-  foo() {
-    // ...
-  }
-
-  // very bad
-  const wat = function
-  *
-  () {
-    // ...
-  };
-
-  // good
-  function* foo() {
-    // ...
-  }
-
-  // good
-  const foo = function* () {
-    // ...
-  };
-  ```
-
-
 
 ## Properties
 
-<a name="properties--dot"></a><a name="12.1"></a>
-- [12.1](#properties--dot) Use dot notation when accessing properties. eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation)
+* <a name="properties--dot"></a>Use dot notation when accessing properties. eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation)
+  <sup>[[link](#properties--dot)]</sup>
 
   ```javascript
   const luke = {
@@ -1436,8 +1029,8 @@
   const isJedi = luke.jedi;
   ```
 
-<a name="properties--bracket"></a><a name="12.2"></a>
-- [12.2](#properties--bracket) Use bracket notation `[]` when accessing properties with a variable.
+* <a name="properties--bracket"></a>Use bracket notation `[]` when accessing properties with a variable.
+  <sup>[[link](#properties--bracket)]</sup>
 
   ```javascript
   const luke = {
@@ -1452,23 +1045,11 @@
   const isJedi = getProp('jedi');
   ```
 
-<a name="es2016-properties--exponentiation-operator"></a>
-- [12.3](#es2016-properties--exponentiation-operator) Use exponentiation operator `**` when calculating exponentiations. eslint: [`prefer-exponentiation-operator`](https://eslint.org/docs/rules/prefer-exponentiation-operator).
-
-  ```javascript
-  // bad
-  const binary = Math.pow(2, 10);
-
-  // good
-  const binary = 2 ** 10;
-  ```
-
-
 
 ## Variables
 
-<a name="references--prefer-const"></a><a name="2.1"></a>
-- [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
+* <a name="references--prefer-const"></a>Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
+  <sup>[[link](#references--prefer-const)]</sup>
 
   > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
 
@@ -1482,8 +1063,8 @@
   const b = 2;
   ```
 
-<a name="references--disallow-var"></a><a name="2.2"></a>
-- [2.2](#references--disallow-var) If you must reassign references, use `let` instead of `var`. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
+* <a name="references--disallow-var"></a>If you must reassign references, use `let` instead of `var`. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
+  <sup>[[link](#references--disallow-var)]</sup>
 
   > Why? `let` is block-scoped rather than function-scoped like `var`.
 
@@ -1501,8 +1082,7 @@
   }
   ```
 
-<a name="references--block-scope"></a><a name="2.3"></a>
-- [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped, whereas `var` is function-scoped.
+**Note:** both `let` and `const` are block-scoped, whereas `var` is function-scoped.
 
   ```javascript
   // const and let only exist in the blocks they are defined in.
@@ -1516,11 +1096,8 @@
   console.log(c); // Prints 1
   ```
 
-  In the above code, you can see that referencing `a` and `b` will produce a ReferenceError, while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
-
-
-<a name="variables--const"></a><a name="13.1"></a>
-- [13.1](#variables--const) Always use `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that. eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
+* <a name="variables--declare"></a>Always declare your variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that. eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
+  <sup>[[link](#variables--declare)]</sup>
 
   ```javascript
   // bad
@@ -1530,11 +1107,9 @@
   const superPower = new SuperPower();
   ```
 
-<a name="variables--one-const"></a><a name="13.2"></a>
-- [13.2](#variables--one-const) Use one `const` or `let` declaration per variable or assignment. eslint: [`one-var`](https://eslint.org/docs/rules/one-var)
-
-  > Why? It’s easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
-
+* <a name="variables--one-const"></a>Use one `const` declaration per variable or assignment. eslint: [`one-var`](https://eslint.org/docs/rules/one-var)
+  <sup>[[link](#variables--one-const)]</sup>
+  
   ```javascript
   // bad
   const items = getItems(),
@@ -1553,17 +1128,12 @@
   const dragonball = 'z';
   ```
 
-<a name="variables--const-let-group"></a><a name="13.3"></a>
-- [13.3](#variables--const-let-group) Group all your `const`s and then group all your `let`s.
+* <a name="variables--const-let-group"></a>Group all your `const`s and then group all your `let`s.
+  <sup>[[link](#variables--const-let-group)]</sup>
 
   > Why? This is helpful when later on you might need to assign a variable depending on one of the previously assigned variables.
 
   ```javascript
-  // bad
-  let i, len, dragonball,
-      items = getItems(),
-      goSportsTeam = true;
-
   // bad
   let i;
   const items = getItems();
@@ -1579,47 +1149,8 @@
   let length;
   ```
 
-<a name="variables--define-where-used"></a><a name="13.4"></a>
-- [13.4](#variables--define-where-used) Assign variables where you need them, but place them in a reasonable place.
-
-  > Why? `let` and `const` are block scoped and not function scoped.
-
-  ```javascript
-  // bad - unnecessary function call
-  function checkName(hasName) {
-    const name = getName();
-
-    if (hasName === 'test') {
-      return false;
-    }
-
-    if (name === 'test') {
-      this.setName('');
-      return false;
-    }
-
-    return name;
-  }
-
-  // good
-  function checkName(hasName) {
-    if (hasName === 'test') {
-      return false;
-    }
-
-    const name = getName();
-
-    if (name === 'test') {
-      this.setName('');
-      return false;
-    }
-
-    return name;
-  }
-  ```
-
-<a name="variables--no-chain-assignment"></a><a name="13.5"></a>
-- [13.5](#variables--no-chain-assignment) Don’t chain variable assignments. eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
+* <a name="variables--no-chain-assignment"></a>Avoid chain variable assignments. eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
+  <sup>[[link](#variables--no-chain-assignment)]</sup>
 
   > Why? Chaining variable assignments creates implicit global variables.
 
@@ -1651,14 +1182,13 @@
   // the same applies for `const`
   ```
 
-<a name="variables--unary-increment-decrement"></a><a name="13.6"></a>
-- [13.6](#variables--unary-increment-decrement) Avoid using unary increments and decrements (`++`, `--`). eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
+* <a name="variables--unary-increment-decrement"></a>Avoid using unary increments and decrements (`++`, `--`). eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
+  <sup>[[link](#variables--unary-increment-decrement)]</sup>
 
   > Why? Per the eslint documentation, unary increment and decrement statements are subject to automatic semicolon insertion and can cause silent errors with incrementing or decrementing values within an application. It is also more expressive to mutate your values with statements like `num += 1` instead of `num++` or `num ++`. Disallowing unary increment and decrement statements also prevents you from pre-incrementing/pre-decrementing values unintentionally which can also cause unexpected behavior in your programs.
 
   ```javascript
   // bad
-
   const array = [1, 2, 3];
   let num = 1;
   num++;
@@ -1675,7 +1205,6 @@
   }
 
   // good
-
   const array = [1, 2, 3];
   let num = 1;
   num += 1;
@@ -1685,8 +1214,8 @@
   const truthyCount = array.filter(Boolean).length;
   ```
 
-<a name="variables--linebreak"></a>
-- [13.7](#variables--linebreak) Avoid linebreaks before or after `=` in an assignment. If your assignment violates [`max-len`](https://eslint.org/docs/rules/max-len), surround the value in parens. eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak).
+* <a name="variables--linebreak"></a>Avoid linebreaks before or after `=` in an assignment. If your assignment violates [`max-len`](https://eslint.org/docs/rules/max-len), surround the value in parens. eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak).
+  <sup>[[link](#variables--linebreak)]</sup>
 
   > Why? Linebreaks surrounding `=` can obfuscate the value of an assignment.
 
@@ -1707,48 +1236,7 @@
   // good
   const foo = 'superLongLongLongLongLongLongLongLongString';
   ```
-
-<a name="variables--no-unused-vars"></a>
-- [13.8](#variables--no-unused-vars) Disallow unused variables. eslint: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars)
-
-  > Why? Variables that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring. Such variables take up space in the code and can lead to confusion by readers.
-
-  ```javascript
-  // bad
-
-  const some_unused_var = 42;
-
-  // Write-only variables are not considered as used.
-  let y = 10;
-  y = 5;
-
-  // A read for a modification of itself is not considered as used.
-  let z = 0;
-  z = z + 1;
-
-  // Unused function arguments.
-  function getX(x, y) {
-      return x;
-  }
-
-  // good
-
-  function getXPlusY(x, y) {
-    return x + y;
-  }
-
-  const x = 1;
-  const y = a + 2;
-
-  alert(getXPlusY(x, y));
-
-  // 'type' is ignored even if unused because it has a rest property sibling.
-  // This is a form of extracting an object that omits the specified keys.
-  const { type, ...coords } = data;
-  // 'coords' is now the 'data' object without its 'type' property.
-  ```
-
-
+  
 
 ## Hoisting
 
@@ -2447,17 +1935,17 @@
   ```javascript
   // bad
   function foo() {
-  ∙∙∙∙let name;
+  let name;
   }
 
   // bad
   function bar() {
-  ∙let name;
+  let name;
   }
 
   // good
   function baz() {
-  ∙∙let name;
+  let name;
   }
   ```
 
@@ -2538,15 +2026,15 @@
   // bad
   import { es6 } from './AirbnbStyleGuide';
     // ...
-  export default es6;↵
-  ↵
+  export default es6;
+  
   ```
 
   ```javascript
   // good
   import { es6 } from './AirbnbStyleGuide';
     // ...
-  export default es6;↵
+  export default es6;
   ```
 
 <a name="whitespace--chains"></a><a name="18.6"></a>
@@ -3453,38 +2941,7 @@
   ```
 
 
-
 ## Accessors
-
-<a name="accessors--not-required"></a><a name="23.1"></a>
-- [24.1](#accessors--not-required) Accessor functions for properties are not required.
-
-<a name="accessors--no-getters-setters"></a><a name="23.2"></a>
-- [24.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use `getVal()` and `setVal('hello')`.
-
-  ```javascript
-  // bad
-  class Dragon {
-    get age() {
-      // ...
-    }
-
-    set age(value) {
-      // ...
-    }
-  }
-
-  // good
-  class Dragon {
-    getAge() {
-      // ...
-    }
-
-    setAge(value) {
-      // ...
-    }
-  }
-  ```
 
 <a name="accessors--boolean-prefix"></a><a name="23.3"></a>
 - [24.3](#accessors--boolean-prefix) If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
@@ -3500,99 +2957,3 @@
     return false;
   }
   ```
-
-<a name="accessors--consistent"></a><a name="23.4"></a>
-- [24.4](#accessors--consistent) It’s okay to create `get()` and `set()` functions, but be consistent.
-
-  ```javascript
-  class Jedi {
-    constructor(options = {}) {
-      const lightsaber = options.lightsaber || 'blue';
-      this.set('lightsaber', lightsaber);
-    }
-
-    set(key, val) {
-      this[key] = val;
-    }
-
-    get(key) {
-      return this[key];
-    }
-  }
-  ```
-
-
-
-## ECMAScript 5 Compatibility
-
-<a name="es5-compat--kangax"></a><a name="26.1"></a>
-- [27.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)’s ES5 [compatibility table](https://compat-table.github.io/compat-table/es5/).
-
-
-
-<a name="ecmascript-6-styles"></a>
-## ECMAScript 6+ (ES 2015+) Styles
-
-<a name="es6-styles"></a><a name="27.1"></a>
-- [28.1](#es6-styles) This is a collection of links to the various ES6+ features.
-
-1. [Arrow Functions](#arrow-functions)
-1. [Classes](#classes--constructors)
-1. [Object Shorthand](#es6-object-shorthand)
-1. [Object Concise](#es6-object-concise)
-1. [Object Computed Properties](#es6-computed-properties)
-1. [Template Strings](#es6-template-literals)
-1. [Destructuring](#destructuring)
-1. [Default Parameters](#es6-default-parameters)
-1. [Rest](#es6-rest)
-1. [Array Spreads](#es6-array-spreads)
-1. [Let and Const](#references)
-1. [Exponentiation Operator](#es2016-properties--exponentiation-operator)
-1. [Iterators and Generators](#iterators-and-generators)
-1. [Modules](#modules)
-
-<a name="tc39-proposals"></a>
-- [28.2](#tc39-proposals) Do not use [TC39 proposals](https://github.com/tc39/proposals) that have not reached stage 3.
-
-  > Why? [They are not finalized](https://tc39.github.io/process-document/), and they are subject to change or to be withdrawn entirely. We want to use JavaScript, and proposals are not JavaScript yet.
-
-
-
-## Standard Library
-
-The [Standard Library](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects)
-contains utilities that are functionally broken but remain for legacy reasons.
-
-<a name="standard-library--isnan"></a>
-- [29.1](#standard-library--isnan) Use `Number.isNaN` instead of global `isNaN`.
-  eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
-
-  > Why? The global `isNaN` coerces non-numbers to numbers, returning true for anything that coerces to NaN.
-  > If this behavior is desired, make it explicit.
-
-  ```javascript
-  // bad
-  isNaN('1.2'); // false
-  isNaN('1.2.3'); // true
-
-  // good
-  Number.isNaN('1.2.3'); // false
-  Number.isNaN(Number('1.2.3')); // true
-  ```
-
-<a name="standard-library--isfinite"></a>
-- [29.2](#standard-library--isfinite) Use `Number.isFinite` instead of global `isFinite`.
-  eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
-
-  > Why? The global `isFinite` coerces non-numbers to numbers, returning true for anything that coerces to a finite number.
-  > If this behavior is desired, make it explicit.
-
-  ```javascript
-  // bad
-  isFinite('2e3'); // true
-
-  // good
-  Number.isFinite('2e3'); // false
-  Number.isFinite(parseInt('2e3', 10)); // true
-  ```
-
