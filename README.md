@@ -9,25 +9,25 @@ It is designed to ensure code consistency, readability, maintainability, and eas
 ## Table of Contents
 
 1. [General Principles](./sections/general-principles.md)
-    - Naming
-    - Consistency
-    - Code Duplication
+    - [Naming](./sections/general-principles.md#naming)
+    - [Consistency](./sections/general-principles.md#consistency)
+    - [Commenting](./sections/general-principles.md#commenting)
+    - [Code Duplication](./sections/general-principles.md#code-duplication)
 1. [Ruby on Rails](./sections/ruby-on-rails.md)
-    - Whitespace
-    - Line Length
-    - Commenting
-    - Methods
-    - Conditional Expressions
-    - Syntax
-    - Naming
-    - Classes
-    - Exceptions
-    - Collections
-    - Strings
-    - Regular Expressions
-    - Percent Literals
-    - Rails
-    - Consistency
+    - [Whitespace](./sections/ruby-on-rails.md#whitespace)
+    - [Commenting](./sections/ruby-on-rails.md#commenting)
+    - [Methods](./sections/ruby-on-rails.md#methods)
+    - [Conditional Expressions](./sections/ruby-on-rails.md#conditional-expressions)
+    - [Syntax](./sections/ruby-on-rails.md#syntax)
+    - [Naming](./sections/ruby-on-rails.md#naming)
+    - [Classes](./sections/ruby-on-rails.md#classes)
+    - [Exceptions](./sections/ruby-on-rails.md#exceptions)
+    - [Collections](./sections/ruby-on-rails.md#collections)
+    - [Strings](./sections/ruby-on-rails.md#strings)
+    - [Regular Expressions](./sections/ruby-on-rails.md#regular-expressions)
+    - [Percent Literals](./sections/ruby-on-rails.md#percent-literals)
+    - [Rails](./sections/ruby-on-rails.md#rails)
+    - [Consistency](./sections/ruby-on-rails.md#consistency)
 1. [JavaScript](./sections/javascript.md)
     - Syntax and ES6+
     - Variables and Constants

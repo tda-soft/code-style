@@ -2,6 +2,20 @@
 
 The following principles apply to all technologies, programming languages, and frameworks used.
 
+## Table of Contents
+1. [Naming](#naming)
+1. [Consistency](#consistency)
+1. [Commenting](#commenting)
+    1. [Section comments](#section-comments)
+    1. [TODO comments](#todo-comments)
+    1. [Commented-out code](#commented-out-code)
+1. [Line Length](#line-length)
+1. [Code Duplication](#code-duplication)
+
+
+---
+
+
 ### Naming
 Choose clear, descriptive, and meaningful names for all identifiers in your code. Good naming improves readability and reduces the need for additional comments.
 
@@ -88,7 +102,8 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
 
 More reference about naming convention [read this article](https://medium.com/wix-engineering/naming-convention-8-basic-rules-for-any-piece-of-code-c4c5f65b0c09).
 
-### Consistency
+
+## Consistency
 
 Consistency is critical to maintaining a clean and maintainable codebase. Always follow existing naming patterns used in the project. 
 If multiple terms exist for the same concept — for example, `fetchData`, `getData`, and `retrieveData` — choose one (e.g., `getData`) and apply it consistently throughout the codebase.
@@ -110,8 +125,64 @@ When in doubt, search the project for similar usages or ask the team to confirm 
       puts user.name
     end
     ```
+
+
+## Commenting
+
+Well-written code should aim to be self-explanatory.
+Clear, descriptive names for classes, methods, and variables often eliminate the need for additional commentary.
+
+Giving sensible names to types and variables is much better
+than using obscure names that you must then explain through comments.
+
+That said, comments are valuable in situations where the code's intent, context, or reasoning isn't immediately obvious. Use them to clarify **why** something is done, not just **what** is done.
+
+Pay attention to punctuation, spelling, and grammar; it is easier to read
+well-written comments than badly written ones.
+
+> Write comments with future developers in mind — especially those unfamiliar with your work.
+> Generosity here pays off: that future developer might be you.
+
+### Section comments
+
+Use comments to divide files, classes, or methods into logical sections.
+This can significantly improve the readability and flow of longer code blocks,
+helping others quickly understand how a file is structured.
+
+### TODO comments
+
+Use TODO comments for code that is temporary, a short-term solution, or
+good-enough but not perfect.
+
+TODOs should include the string TODO in all caps, followed by a comment explaining what there is
+to do is required. The main purpose is to have a consistent TODO format that
+can be searched.
+
+```javascript
+  // bad
+  // TODO
   
-### Code Duplication
+  // bad
+  // to fix
+
+  // good
+  // TODO: Use proper namespacing for this constant.
+```
+
+### Commented-out code
+
+* <a name="commented-code"></a>Avoid leave commented-out code in our codebase.
+  <sup>[[link](#commented-code)]</sup>
+
+
+## Line Length
+
+* Keep each line of code to a readable length. Unless
+  you have a reason not to, keep lines to fewer than 150 characters.
+  [[link](#line-length)]</sup>
+
+
+## Code Duplication
 * Avoid copying and pasting code
 * Extract common functionality into reusable functions
 * Use shared utilities for common operations

@@ -5,7 +5,6 @@
     1. [Indentation](#indentation)
     1. [Inline](#inline)
     1. [Newlines](#newlines)
-1. [Line Length](#line-length)
 1. [Commenting](#commenting)
     1. [Section comments](#section-comments)
     1. [TODO comments](#todo-comments)
@@ -26,7 +25,7 @@
 1. [Percent Literals](#percent-literals)
 1. [Rails](#rails)
     1. [Scopes](#scopes)
-1. [Be Consistent](#be-consistent)
+1. [Consistency](#consistency)
 
 ## Whitespace
 
@@ -268,11 +267,6 @@
 * <a name="trailing-newline"></a>Don't include newlines at the end of a file.
   <sup>[[link](#trailing-newline)]</sup>
 
-## Line Length
-
-* Keep each line of code to a readable length. Unless
-  you have a reason not to, keep lines to fewer than 150 characters.
-  [[link](#line-length)]</sup>
 
 ## Commenting
 
@@ -331,7 +325,7 @@ can be searched.
 
 ### Commented-out code
     
-* <a name="commented-code"></a>Never leave commented-out code in our codebase.
+* <a name="commented-code"></a>Avoid leave commented-out code in our codebase.
   <sup>[[link](#commented-code)]</sup>
 
 ## Methods
@@ -1402,7 +1396,7 @@ can be searched.
     scope :foo, -> { where(:bar => 1) }
     ```
 
-## Be Consistent
+## Consistency
 
 Consistency is critical to maintaining a clean and maintainable codebase. Always follow existing naming patterns used in the project.
 

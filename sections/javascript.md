@@ -13,7 +13,6 @@
 1. [Iterators and Generators](#iterators-and-generators)
 1. [Properties](#properties)
 1. [Variables](#variables)
-1. [Hoisting](#hoisting)
 1. [Comparison Operators & Equality](#comparison-operators--equality)
 1. [Blocks](#blocks)
 1. [Control Statements](#control-statements)
@@ -1236,164 +1235,15 @@
   // good
   const foo = 'superLongLongLongLongLongLongLongLongString';
   ```
-  
-
-## Hoisting
-
-<a name="hoisting--about"></a><a name="14.1"></a>
-- [14.1](#hoisting--about) `var` declarations get hoisted to the top of their closest enclosing function scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz). It’s important to know why [typeof is no longer safe](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
-
-  ```javascript
-  // we know this wouldn’t work (assuming there
-  // is no notDefined global variable)
-  function example() {
-    console.log(notDefined); // => throws a ReferenceError
-  }
-
-  // creating a variable declaration after you
-  // reference the variable will work due to
-  // variable hoisting. Note: the assignment
-  // value of `true` is not hoisted.
-  function example() {
-    console.log(declaredButNotAssigned); // => undefined
-    var declaredButNotAssigned = true;
-  }
-
-  // the interpreter is hoisting the variable
-  // declaration to the top of the scope,
-  // which means our example could be rewritten as:
-  function example() {
-    let declaredButNotAssigned;
-    console.log(declaredButNotAssigned); // => undefined
-    declaredButNotAssigned = true;
-  }
-
-  // using const and let
-  function example() {
-    console.log(declaredButNotAssigned); // => throws a ReferenceError
-    console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
-    const declaredButNotAssigned = true;
-  }
-  ```
-
-<a name="hoisting--anon-expressions"></a><a name="14.2"></a>
-- [14.2](#hoisting--anon-expressions) Anonymous function expressions hoist their variable name, but not the function assignment.
-
-  ```javascript
-  function example() {
-    console.log(anonymous); // => undefined
-
-    anonymous(); // => TypeError anonymous is not a function
-
-    var anonymous = function () {
-      console.log('anonymous function expression');
-    };
-  }
-  ```
-
-<a name="hoisting--named-expresions"></a><a name="hoisting--named-expressions"></a><a name="14.3"></a>
-- [14.3](#hoisting--named-expressions) Named function expressions hoist the variable name, not the function name or the function body.
-
-  ```javascript
-  function example() {
-    console.log(named); // => undefined
-
-    named(); // => TypeError named is not a function
-
-    superPower(); // => ReferenceError superPower is not defined
-
-    var named = function superPower() {
-      console.log('Flying');
-    };
-  }
-
-  // the same is true when the function name
-  // is the same as the variable name.
-  function example() {
-    console.log(named); // => undefined
-
-    named(); // => TypeError named is not a function
-
-    var named = function named() {
-      console.log('named');
-    };
-  }
-  ```
-
-<a name="hoisting--declarations"></a><a name="14.4"></a>
-- [14.4](#hoisting--declarations) Function declarations hoist their name and the function body.
-
-  ```javascript
-  function example() {
-    superPower(); // => Flying
-
-    function superPower() {
-      console.log('Flying');
-    }
-  }
-  ```
-
-<a name="no-use-before-define"></a>
-- [14.5](#no-use-before-define) Variables, classes, and functions should be defined before they can be used. eslint: [`no-use-before-define`](https://eslint.org/docs/latest/rules/no-use-before-define)
-
-  > Why? When variables, classes, or functions are declared after being used, it can harm readability since a reader won't know what a thing that's referenced is. It's much clearer for a reader to first encounter the source of a thing (whether imported from another module, or defined in the file) before encountering a use of the thing.
-
-  ```javascript
-  // bad
-
-  // Variable a is being used before it is being defined.
-  console.log(a); // this will be undefined, since while the declaration is hoisted, the initialization is not
-  var a = 10;
-
-  // Function fun is being called before being defined.
-  fun();
-  function fun() {}
-
-  // Class A is being used before being defined.
-  new A(); // ReferenceError: Cannot access 'A' before initialization
-  class A {
-  }
-
-  // `let` and `const` are hoisted, but they don't have a default initialization.
-  // The variables 'a' and 'b' are in a Temporal Dead Zone where JavaScript
-  // knows they exist (declaration is hoisted) but they are not accessible
-  // (as they are not yet initialized).
-
-  console.log(a); // ReferenceError: Cannot access 'a' before initialization
-  console.log(b); // ReferenceError: Cannot access 'b' before initialization
-  let a = 10;
-  const b = 5;
-
-
-  // good
-
-  var a = 10;
-  console.log(a); // 10
-
-  function fun() {}
-  fun();
-
-  class A {
-  }
-  new A();
-
-  let a = 10;
-  const b = 5;
-  console.log(a); // 10
-  console.log(b); // 5
-  ```
-
-- For more information refer to [JavaScript Scoping & Hoisting](https://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](https://www.adequatelygood.com/).
-
 
 
 ## Comparison Operators & Equality
 
-<a name="comparison--eqeqeq"></a><a name="15.1"></a>
-- [15.1](#comparison--eqeqeq) Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
+* <a name="comparison--eqeqeq"></a>Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
+  <sup>[[link](#comparison--eqeqeq)]</sup>
 
-<a name="comparison--if"></a><a name="15.2"></a>
-- [15.2](#comparison--if) Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+* <a name="comparison--if"></a>Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  <sup>[[link](#comparison--if)]</sup>
 
     - **Objects** evaluate to **true**
     - **Undefined** evaluates to **false**
@@ -1409,8 +1259,8 @@
   }
   ```
 
-<a name="comparison--shortcuts"></a><a name="15.3"></a>
-- [15.3](#comparison--shortcuts) Use shortcuts for booleans, but explicit comparisons for strings and numbers.
+* <a name="comparison--shortcuts"></a>Use shortcuts for booleans, but explicit comparisons for strings and numbers.
+  <sup>[[link](#comparison--shortcuts)]</sup>
 
   ```javascript
   // bad
@@ -1444,59 +1294,34 @@
   }
   ```
 
-<a name="comparison--moreinfo"></a><a name="15.4"></a>
-- [15.4](#comparison--moreinfo) For more information see [Truth, Equality, and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+* <a name="comparison--switch-blocks"></a>Avoid braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`). eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations)
+  <sup>[[link](#comparison--switch-blocks)]</sup>
 
-<a name="comparison--switch-blocks"></a><a name="15.5"></a>
-- [15.5](#comparison--switch-blocks) Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`). eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations)
-
-  > Why? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
-
-  ```javascript
-  // bad
-  switch (foo) {
-    case 1:
-      let x = 1;
-      break;
-    case 2:
-      const y = 2;
-      break;
-    case 3:
-      function f() {
+    ```javascript
+    // bad
+    switch (foo) {
+      case 1: {
+        // ...
+        break;
+      }
+      default: {
         // ...
       }
-      break;
-    default:
-      class C {}
-  }
-
-  // good
-  switch (foo) {
-    case 1: {
-      let x = 1;
-      break;
     }
-    case 2: {
-      const y = 2;
-      break;
-    }
-    case 3: {
-      function f() {
+    
+    // good
+    switch (foo) {
+      case 1:
         // ...
-      }
-      break;
+        break;
+    
+      default:
+        // ...
     }
-    case 4:
-      bar();
-      break;
-    default: {
-      class C {}
-    }
-  }
-  ```
+    ```
 
-<a name="comparison--nested-ternaries"></a><a name="15.6"></a>
-- [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions. eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary)
+* <a name="comparison--nested-ternaries"></a>Ternaries should not be nested and generally be single line expressions. eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary)
+  <sup>[[link](#comparison--nested-ternaries)]</sup>
 
   ```javascript
   // bad
@@ -1504,40 +1329,13 @@
     ? "bar"
     : value1 > value2 ? "baz" : null;
 
-  // split into 2 separated ternary expressions
+  // good
   const maybeNull = value1 > value2 ? 'baz' : null;
-
-  // better
-  const foo = maybe1 > maybe2
-    ? 'bar'
-    : maybeNull;
-
-  // best
   const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
   ```
 
-<a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
-- [15.7](#comparison--unneeded-ternary) Avoid unneeded ternary statements. eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary)
-
-  ```javascript
-  // bad
-  const foo = a ? a : b;
-  const bar = c ? true : false;
-  const baz = c ? false : true;
-  const quux = a != null ? a : b;
-
-  // good
-  const foo = a || b;
-  const bar = !!c;
-  const baz = !c;
-  const quux = a ?? b;
-  ```
-
-<a name="comparison--no-mixed-operators"></a>
-- [15.8](#comparison--no-mixed-operators) When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators: `+`, `-`, and `**` since their precedence is broadly understood. We recommend enclosing `/` and `*` in parentheses because their precedence can be ambiguous when they are mixed.
-  eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators)
-
-  > Why? This improves readability and clarifies the developer’s intention.
+* <a name="comparison--no-mixed-operators"></a>When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators: `+`, `-`, and `**` since their precedence is broadly understood. We recommend enclosing `/` and `*` in parentheses because their precedence can be ambiguous when they are mixed. eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators)
+  <sup>[[link](#comparison--no-mixed-operators)]</sup>
 
   ```javascript
   // bad
@@ -1570,8 +1368,8 @@
   const bar = a + (b / c) * d;
   ```
 
-<a name="nullish-coalescing-operator"></a>
-- [15.9](#nullish-coalescing-operator) The nullish coalescing operator (`??`) is a logical operator that returns its right-hand side operand when its left-hand side operand is `null` or `undefined`. Otherwise, it returns the left-hand side operand.
+* <a name="nullish-coalescing-operator"></a>The nullish coalescing operator (`??`) is a logical operator that returns its right-hand side operand when its left-hand side operand is `null` or `undefined`. Otherwise, it returns the left-hand side operand.
+  <sup>[[link](#nullish-coalescing-operator)]</sup>
 
   > Why? It provides precision by distinguishing null/undefined from other falsy values, enhancing code clarity and predictability.
 
@@ -1598,18 +1396,17 @@
   ```
 
 
-
 ## Blocks
 
-<a name="blocks--braces"></a><a name="16.1"></a>
-- [16.1](#blocks--braces) Use braces with all multiline blocks. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
+* <a name="blocks--braces"></a>Use braces with all blocks. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
+  <sup>[[link](#blocks--braces)]</sup>
 
   ```javascript
   // bad
   if (test)
     return false;
 
-  // good
+  // bad
   if (test) return false;
 
   // good
@@ -1617,39 +1414,32 @@
     return false;
   }
 
-  // bad
-  function foo() { return false; }
-
   // good
-  function bar() {
-    return false;
-  }
+  function foo() { return false; }
   ```
 
-<a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-- [16.2](#blocks--cuddled-elses) If you’re using multiline blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style)
+* <a name="blocks--cuddled-elses"></a>If you’re using multiline blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style)
+  <sup>[[link](#blocks--cuddled-elses)]</sup>
 
   ```javascript
   // bad
   if (test) {
-    thing1();
-    thing2();
+    // ...
   }
   else {
-    thing3();
+    // ...
   }
 
   // good
   if (test) {
-    thing1();
-    thing2();
+    // ...
   } else {
-    thing3();
+    // ...
   }
   ```
 
-<a name="blocks--no-else-return"></a><a name="16.3"></a>
-- [16.3](#blocks--no-else-return) If an `if` block always executes a `return` statement, the subsequent `else` block is unnecessary. A `return` in an `else if` block following an `if` block that contains a `return` can be separated into multiple `if` blocks. eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
+* <a name="blocks--no-else-return"></a>If an `if` block always executes a `return` statement, the subsequent `else` block is unnecessary. A `return` in an `else if` block following an `if` block that contains a `return` can be separated into multiple `if` blocks. eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
+  <sup>[[link](#blocks--no-else-return)]</sup>
 
   ```javascript
   // bad
@@ -1700,27 +1490,13 @@
       return y;
     }
   }
-
-  // good
-  function dogs(x) {
-    if (x) {
-      if (z) {
-        return y;
-      }
-    } else {
-      return z;
-    }
-  }
   ```
-
 
 
 ## Control Statements
 
-<a name="control-statements"></a>
-- [17.1](#control-statements) In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. The logical operator should begin the line.
-
-  > Why? Requiring operators at the beginning of the line keeps the operators aligned and follows a pattern similar to method chaining. This also improves readability by making it easier to visually follow complex logic.
+* <a name="control-statements"></a>In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line.
+  <sup>[[link](#control-statements)]</sup>
 
   ```javascript
   // bad
@@ -1742,14 +1518,6 @@
 
   // bad
   if (
-    foo === 123 &&
-    bar === 'abc'
-  ) {
-    thing1();
-  }
-
-  // good
-  if (
     foo === 123
     && bar === 'abc'
   ) {
@@ -1758,9 +1526,17 @@
 
   // good
   if (
-    (foo === 123 || bar === 'abc')
-    && doesItLookGoodWhenItBecomesThatLong()
-    && isThisReallyHappening()
+    foo === 123 &&
+    bar === 'abc'
+  ) {
+    thing1();
+  }
+
+  // good
+  if (
+    (foo === 123 || bar === 'abc') &&
+    doesItLookGoodWhenItBecomesThatLong() &&
+    isThisReallyHappening()
   ) {
     thing1();
   }
