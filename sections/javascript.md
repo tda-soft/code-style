@@ -25,6 +25,9 @@
 1. [Accessors](#accessors)
 
 
+---
+
+
 ## Objects
 
 * <a name="objects--no-new"></a>Use the literal syntax for object creation. eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
@@ -1706,24 +1709,7 @@
 ## Whitespace
 
 <a name="whitespace--spaces"></a><a name="18.1"></a>
-- [19.1](#whitespace--spaces) Use soft tabs (space character) set to 2 spaces. eslint: [`indent`](https://eslint.org/docs/rules/indent)
-
-  ```javascript
-  // bad
-  function foo() {
-  let name;
-  }
-
-  // bad
-  function bar() {
-  let name;
-  }
-
-  // good
-  function baz() {
-  let name;
-  }
-  ```
+- [19.1](#whitespace--spaces) Use soft tabs (space character) set to 4 spaces. eslint: [`indent`](https://eslint.org/docs/rules/indent
 
 <a name="whitespace--before-blocks"></a><a name="18.2"></a>
 - [19.2](#whitespace--before-blocks) Place 1 space before the leading brace. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
@@ -2476,7 +2462,6 @@
   // best
   const hasAge = !!age;
   ```
-
 
 
 ## Naming Conventions

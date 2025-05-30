@@ -27,6 +27,10 @@
     1. [Scopes](#scopes)
 1. [Consistency](#consistency)
 
+
+---
+
+
 ## Whitespace
 
 ### Indentation
@@ -328,6 +332,7 @@ can be searched.
 * <a name="commented-code"></a>Avoid leave commented-out code in our codebase.
   <sup>[[link](#commented-code)]</sup>
 
+
 ## Methods
 
 ### Method definitions
@@ -406,6 +411,7 @@ can be searched.
     # good
     nil?
     ```
+
 
 ## Conditional Expressions
 
@@ -671,6 +677,7 @@ can be searched.
   See also the section "Guard Clause", p68-70 in Beck, Kent.
   *Implementation Patterns*. Upper Saddle River: Addison-Wesley, 2008, which
   has inspired some of the content above.
+
 
 ## Syntax
 
@@ -949,6 +956,7 @@ can be searched.
     end
     ```
 
+
 ## Naming
 
 * <a name="snake-case"></a>Use `snake_case` for methods and variables.
@@ -978,6 +986,7 @@ can be searched.
     version = '3.2.1'
     major_version, minor_version, _ = version.split('.')
     ```
+
 
 ## Classes
 
@@ -1072,6 +1081,7 @@ can be searched.
     end
     ```
 
+
 ## Exceptions
 
 * <a name="exception-flow-control"></a>Don't use exceptions for flow of control.
@@ -1140,6 +1150,7 @@ can be searched.
       handle_error(ex)
     end
     ```
+
 
 ## Collections
 
@@ -1256,6 +1267,7 @@ can be searched.
     ]
     ```
 
+
 ## Strings
 
 * <a name="string-interpolation"></a>Prefer string interpolation instead of
@@ -1285,6 +1297,7 @@ can be searched.
     "Some string is really long and " \
       "spans multiple lines."
     ```
+
 
 ## Regular Expressions
 
@@ -1328,6 +1341,7 @@ can be searched.
     }x
     ```
 
+
 ## Percent Literals
 
 * <a name="percent-literal-delimiters"></a>Prefer parentheses over curly
@@ -1357,6 +1371,7 @@ can be searched.
     date = `date`
     echo = %x(echo `date`)
     ```
+
 
 ## Rails
 
@@ -1395,6 +1410,7 @@ can be searched.
     # good
     scope :foo, -> { where(:bar => 1) }
     ```
+
 
 ## Consistency
 

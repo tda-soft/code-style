@@ -172,13 +172,13 @@ can be searched.
 
 ### Deprecation comments
 
-* <a name="comments-todo"></a>Use `@deprecated` comments for code that will no-longer be supported in the future, place the comment right above the method or class
-  <sup>[[link](#comments-todo)]</sup>
+* <a name="comments-deprecation"></a>Use `@deprecated` comments for code that will no-longer be supported in the future, place the comment right above the method or class
+  <sup>[[link](#comments-deprecation)]</sup>
 
 ### Commented-out code
 
-* <a name="commented-code"></a>Avoid leave commented-out code in our codebase.
-  <sup>[[link](#commented-code)]</sup>
+* <a name="commented-out-code"></a>Avoid leave commented-out code in our codebase.
+  <sup>[[link](#commented-out-code)]</sup>
 
 
 ## Line Length
