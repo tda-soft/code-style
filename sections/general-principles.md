@@ -8,6 +8,7 @@ The following principles apply to all technologies, programming languages, and f
 1. [Commenting](#commenting)
     1. [Section comments](#section-comments)
     1. [TODO comments](#todo-comments)
+    1. [Deprecation comments](#deprecation-comments)
     1. [Commented-out code](#commented-out-code)
 1. [Line Length](#line-length)
 1. [Code Duplication](#code-duplication)
@@ -151,23 +152,28 @@ helping others quickly understand how a file is structured.
 
 ### TODO comments
 
-Use TODO comments for code that is temporary, a short-term solution, or
-good-enough but not perfect.
+* <a name="comments-todo"></a>Use `@todo` comments for code that is temporary, a short-term solution, or good-enough but not perfect.
+  <sup>[[link](#comments-todo)]</sup>
 
-TODOs should include the string TODO in all caps, followed by a comment explaining what there is
+TODOs should always be followed by a comment explaining what there is
 to do is required. The main purpose is to have a consistent TODO format that
 can be searched.
 
 ```javascript
-  // bad
-  // TODO
-  
-  // bad
-  // to fix
+// bad
+// TODO
 
-  // good
-  // TODO: Use proper namespacing for this constant.
+// bad
+// to fix
+
+// good
+// @todo: Use proper namespacing for this constant.
 ```
+
+### Deprecation comments
+
+* <a name="comments-todo"></a>Use `@deprecated` comments for code that will no-longer be supported in the future, place the comment right above the method or class
+  <sup>[[link](#comments-todo)]</sup>
 
 ### Commented-out code
 
