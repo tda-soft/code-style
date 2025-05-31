@@ -3,7 +3,7 @@
 The following principles apply to all technologies, programming languages, and frameworks used.
 
 ## Table of Contents
-1. [Naming](#naming)
+1. [Naming Conventions](#naming-conventions)
 1. [Consistency](#consistency)
 1. [Commenting](#commenting)
     1. [Section comments](#section-comments)
@@ -17,10 +17,12 @@ The following principles apply to all technologies, programming languages, and f
 ---
 
 
-### Naming
+### Naming Conventions
+
 Choose clear, descriptive, and meaningful names for all identifiers in your code. Good naming improves readability and reduces the need for additional comments.
 
-* <a name="meaningful-names"></a>Use meaningful, descriptive names for variables, methods, classes, and constants.<sup>[[link](#meaningful-names)]</sup>
+* <a name="meaningful-names"></a>Use meaningful, descriptive names for variables, methods, classes, and constants.
+  <sup>[[link](#meaningful-names)]</sup>
 
     ```
     # bad
@@ -30,7 +32,8 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     function calculate_total_price(cart_items) { ... }
     ```
 
-* <a name="avoid-slang"></a>Avoid slang or humorous terms in naming.<sup>[[link](#avoid-slang)]</sup>
+* <a name="avoid-slang"></a>Avoid slang or humorous terms in naming.
+  <sup>[[link](#avoid-slang)]</sup>
 
     ```
     # bad
@@ -39,7 +42,9 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     # good
     product.remove()
     ```
-* <a name="avoid-abbreviations"></a>Avoid abbreviations, especially for variable names.<sup>[[link](#avoid-abbreviations)]</sup>
+  
+* <a name="avoid-abbreviations"></a>Avoid abbreviations, especially for variable names.
+  <sup>[[link](#avoid-abbreviations)]</sup>
 
     ```ruby
     # bad
@@ -49,7 +54,8 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     active_user = User.where(active: true)
     ```
 
-* <a name="boolean-prefixes"></a>Prefix boolean variables and methods with `is_` or `has_`.<sup>[[link](#boolean-prefixes)]</sup>
+* <a name="boolean-prefixes"></a>Prefix boolean variables and methods with `is_` or `has_`.
+  <sup>[[link](#boolean-prefixes)]</sup>
 
     ```
     # bad
@@ -59,7 +65,8 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     is_valid = true
     ```
 
-* <a name="noun-variable-names"></a>Use **nouns** for variables and constants that describe the data they hold.<sup>[[link](#noun-variable-names)]</sup>
+* <a name="noun-variable-names"></a>Use **nouns** for variables and constants that describe the data they hold.
+  <sup>[[link](#noun-variable-names)]</sup>
 
     ```
     # bad
@@ -69,7 +76,8 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     authorized_user_uuids = [...]
     ```
 
-* <a name="verb-method-names"></a>For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do<sup>[[link](#verb-method-names)]</sup>
+* <a name="verb-method-names"></a>For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do.
+  <sup>[[link](#verb-method-names)]</sup>
 
     ```
     # bad
@@ -82,7 +90,8 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     function send_data() { ... }
     ```
 
-* <a name="noun-class-names"></a>Use **nouns** for class names that reflect the responsibility of the class.<sup>[[link](#noun-class-names)]</sup>
+* <a name="noun-class-names"></a>Use **nouns** for class names that reflect the responsibility of the class.
+  <sup>[[link](#noun-class-names)]</sup>
 
     ```ruby
     # bad
@@ -111,7 +120,8 @@ If multiple terms exist for the same concept — for example, `fetchData`, `getD
 
 When in doubt, search the project for similar usages or ask the team to confirm the standard term.
 
-* <a name="consistent-indentation"></a>Maintain consistent indentation throughout the codebase.<sup>[[link](#consistent-indentation)]</sup>
+* <a name="consistent-indentation"></a>Maintain consistent indentation throughout the codebase.
+  <sup>[[link](#consistent-indentation)]</sup>
 
     ```ruby
     # bad
@@ -144,6 +154,51 @@ well-written comments than badly written ones.
 > Write comments with future developers in mind — especially those unfamiliar with your work.
 > Generosity here pays off: that future developer might be you.
 
+* <a name="comments--newline"></a>Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  <sup>[[link](#comments--newline)]</sup>
+
+  ```javascript
+  // bad
+  const active = true;  // is current tab
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  function getType() {
+    console.log('fetching type...');
+    // set the default type to 'no type'
+    const type = this.type || 'no type';
+
+    return type;
+  }
+
+  // good
+  function getType() {
+    console.log('fetching type...');
+
+    // set the default type to 'no type'
+    const type = this.type || 'no type';
+
+    return type;
+  }
+  ```
+
+* <a name="comments--spaces"></a>Start all comments with a space to make it easier to read.
+  <sup>[[link](#comments--spaces)]</sup>
+
+  ```javascript
+  // bad
+  //is current tab
+  const active = true;
+
+  // good
+  // is current tab
+  const active = true;
+  ```
+
+
 ### Section comments
 
 Use comments to divide files, classes, or methods into logical sections.
@@ -155,20 +210,20 @@ helping others quickly understand how a file is structured.
 * <a name="comments-todo"></a>Use `@todo` comments for code that is temporary, a short-term solution, or good-enough but not perfect.
   <sup>[[link](#comments-todo)]</sup>
 
-TODOs should always be followed by a comment explaining what there is
-to do is required. The main purpose is to have a consistent TODO format that
-can be searched.
-
-```javascript
-// bad
-// TODO
-
-// bad
-// to fix
-
-// good
-// @todo: Use proper namespacing for this constant.
-```
+  TODOs should always be followed by a comment explaining what there is
+  to do is required. The main purpose is to have a consistent TODO format that
+  can be searched.
+    
+  ```javascript
+  // bad
+  // TODO
+  
+  // bad
+  // to fix
+  
+  // good
+  // @todo: Use proper namespacing for this constant.
+  ```
 
 ### Deprecation comments
 

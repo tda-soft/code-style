@@ -16,7 +16,7 @@
     1. [Conditional keywords](#conditional-keywords)
     1. [Ternary operator](#ternary-operator)
 1. [Syntax](#syntax)
-1. [Naming](#naming)
+1. [Naming Conventions](#naming-conventions)
 1. [Classes](#classes)
 1. [Exceptions](#exceptions)
 1. [Collections](#collections)
@@ -288,6 +288,50 @@ well-written comments than badly written ones.
 > Write comments with future developers in mind — especially those unfamiliar with your work.
 > Generosity here pays off: that future developer might be you.
 
+* <a name="comments--newline"></a>Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  <sup>[[link](#comments--newline)]</sup>
+
+  ```ruby
+  # bad
+  active = true  # is current tab
+
+  # good
+  # is current tab
+  active = true
+
+  # bad
+  def getType
+    puts "fetching type..."
+    # set the default type to 'no type'
+    type ||= "no type"
+
+    return type
+  end
+
+  # good
+  def getType
+    puts "fetching type..."
+
+    # set the default type to 'no type'
+    type ||= "no type"
+
+    return type
+  end
+  ```
+
+* <a name="comments--spaces"></a>Start all comments with a space to make it easier to read.
+  <sup>[[link](#comments--spaces)]</sup>
+
+  ```ruby
+  // bad
+  //is current tab
+  active = true
+
+  // good
+  // is current tab
+  active = true
+  ```
+  
 ### Section comments
 
 Use comments to divide files, classes, or methods into logical sections. 
@@ -295,14 +339,14 @@ This can significantly improve the readability and flow of longer code blocks,
 helping others quickly understand how a file is structured.
 
 ```ruby
-def foo()
+def foo
   ...
 end
 
 
 #
 # Section comment (2 spaces above)
-def bar()
+def bar
   ...
 end
 ```
@@ -957,8 +1001,116 @@ can be searched.
     ```
 
 
-## Naming
+## Naming Conventions
 
+Choose clear, descriptive, and meaningful names for all identifiers in your code. Good naming improves readability and reduces the need for additional comments.
+
+* <a name="meaningful-names"></a>Use meaningful, descriptive names for variables, methods, classes, and constants.
+  <sup>[[link](#meaningful-names)]</sup>
+
+    ```ruby
+    # bad
+    def calc(x) 
+      ...
+    end
+
+    # good
+    def calculate_total_price(cart_items)
+      ...
+    end
+    ```
+
+* <a name="avoid-slang"></a>Avoid slang or humorous terms in naming.
+  <sup>[[link](#avoid-slang)]</sup>
+
+    ```ruby
+    # bad
+    product.diePlease()
+
+    # good
+    product.remove()
+    ```
+
+* <a name="avoid-abbreviations"></a>Avoid abbreviations, especially for variable names.
+  <sup>[[link](#avoid-abbreviations)]</sup>
+
+    ```ruby
+    # bad
+    u = User.where(active: true)
+
+    # good
+    active_user = User.where(active: true)
+    ```
+
+* <a name="boolean-prefixes"></a>Prefix boolean variables and methods with `is_` or `has_`.
+  <sup>[[link](#boolean-prefixes)]</sup>
+
+    ```ruby
+    # bad
+    valid = true
+
+    # good
+    is_valid = true
+    ```
+
+* <a name="noun-variable-names"></a>Use **nouns** for variables and constants that describe the data they hold.
+  <sup>[[link](#noun-variable-names)]</sup>
+
+    ```ruby
+    # bad
+    uuids = [...]
+
+    # good
+    authorized_user_uuids = [...]
+    ```
+
+* <a name="verb-method-names"></a>For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do.
+  <sup>[[link](#verb-method-names)]</sup>
+
+    ```ruby
+    # bad
+    def sned()
+      ...
+    end
+    
+    def handle()
+      ...
+    end
+  
+    def proc_val() 
+      ...
+    end
+  
+    def data()
+      ...
+    end
+  
+    # good
+    def send_data()
+      ... 
+    end
+    ```
+
+* <a name="noun-class-names"></a>Use **nouns** for class names that reflect the responsibility of the class.
+  <sup>[[link](#noun-class-names)]</sup>
+
+    ```ruby
+    # bad
+    class ProcessData
+      ...
+    end
+  
+    # bad
+    class Helper
+      ...
+    end
+
+    # good
+    class ReportService
+      ...
+    end
+    ```
+  
 * <a name="snake-case"></a>Use `snake_case` for methods and variables.
   <sup>[[link](#snake-case)]</sup>
 

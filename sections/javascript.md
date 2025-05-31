@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+1. [Naming Conventions](#naming-conventions)
 1. [Objects](#objects)
 1. [Arrays](#arrays)
 1. [Destructuring](#destructuring)
@@ -16,17 +17,183 @@
 1. [Comparison Operators & Equality](#comparison-operators--equality)
 1. [Blocks](#blocks)
 1. [Control Statements](#control-statements)
-1. [Comments](#comments)
+1. [Commenting](#commenting)
 1. [Whitespace](#whitespace)
 1. [Commas](#commas)
 1. [Semicolons](#semicolons)
-1. [Type Casting & Coercion](#type-casting--coercion)
-1. [Naming Conventions](#naming-conventions)
-1. [Accessors](#accessors)
 
 
 ---
 
+
+## Naming Conventions
+
+Choose clear, descriptive, and meaningful names for all identifiers in your code. Good naming improves readability and reduces the need for additional comments.
+
+* <a name="meaningful-names"></a>Use meaningful, descriptive names for variables, methods, classes, and constants.
+  <sup>[[link](#meaningful-names)]</sup>
+
+    ```javascript
+    // bad
+    function calc(x) { ... }
+
+    // good
+    function calculate_total_price(cart_items) { ... }
+    ```
+
+* <a name="avoid-slang"></a>Avoid slang or humorous terms in naming.
+  <sup>[[link](#avoid-slang)]</sup>
+
+    ```javascript
+    // bad
+    product.diePlease();
+
+    // good
+    product.remove();
+    ```
+
+* <a name="avoid-abbreviations"></a>Avoid abbreviations, especially for variable names.
+  <sup>[[link](#avoid-abbreviations)]</sup>
+
+    ```javascript
+    // bad
+    u = User.find(user => user.active);
+
+    // good
+    active_user = User.find(user => user.active);
+    ```
+
+* <a name="boolean-prefixes"></a>Prefix boolean variables and methods with `is_` or `has_`.
+  <sup>[[link](#boolean-prefixes)]</sup>
+
+    ```javascript
+    // bad
+    valid = true;
+
+    // good
+    is_valid = true;
+    ```
+
+* <a name="noun-variable-names"></a>Use **nouns** for variables and constants that describe the data they hold.
+  <sup>[[link](#noun-variable-names)]</sup>
+
+    ```javascript
+    // bad
+    uuids = [...];
+
+    // good
+    authorized_user_uuids = [...];
+    ```
+
+* <a name="verb-method-names"></a>For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do.
+  <sup>[[link](#verb-method-names)]</sup>
+
+    ```javascript
+    // bad
+    function sned() { ... }
+    function handle() { ... }
+    function proc_val() { ... }
+    function data() { ... }
+  
+    // good
+    function send_data() { ... }
+    ```
+
+* <a name="noun-class-names"></a>Use **nouns** for class names that reflect the responsibility of the class.
+  <sup>[[link](#noun-class-names)]</sup>
+
+    ```javascript
+    // bad
+    class ProcessData {
+      ...
+    }
+  
+    // bad
+    class Helper {
+      ...
+    }
+
+    // good
+    class ReportService {
+      ...
+    }
+    ```
+
+* <a name="naming--camelCase"></a>Use **camelCase** when naming objects, functions, and instances. eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase)
+  <sup>[[link](#naming--camelCase)]</sup>
+
+  ```javascript
+  // bad
+  const OBJEcttsssss = {};
+  const this_is_my_object = {};
+  function c() {}
+
+  // good
+  const thisIsMyObject = {};
+  function thisIsMyFunction() {}
+  ```
+
+* <a name="naming--PascalCase"></a>Use **PascalCase** only when naming constructors or classes. eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap)
+  <sup>[[link](#naming--PascalCase)]</sup>
+
+  ```javascript
+  // bad
+  function user(options) {
+    this.name = options.name;
+  }
+
+  const bad = new user({
+    name: 'nope',
+  });
+
+  // good
+  class User {
+    constructor(options) {
+      this.name = options.name;
+    }
+  }
+
+  const good = new User({
+    name: 'yup',
+  });
+  ```
+
+* <a name="naming--filename-matches-export"></a>A base filename should exactly match the name of its default export.
+  <sup>[[link](#naming--filename-matches-export)]</sup>
+
+  ```javascript
+  // file 1 contents
+  class CheckBox {
+    // ...
+  }
+  export default CheckBox;
+
+  // file 2 contents
+  export default function fortyTwo() { return 42; }
+
+  // file 3 contents
+  export default function insideDirectory() {}
+
+  // in some other file
+  // bad
+  import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
+  import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
+  import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
+
+  // bad
+  import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
+  import forty_two from './forty_two'; // snake_case import/filename, camelCase export
+  import inside_directory from './inside_directory'; // snake_case import, camelCase export
+  import index from './inside_directory/index'; // requiring the index file explicitly
+  import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
+
+  // good
+  import CheckBox from './CheckBox'; // PascalCase export/import/filename
+  import fortyTwo from './fortyTwo'; // camelCase export/import/filename
+  import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
+  // ^ supports both insideDirectory.js and insideDirectory/index.js
+  ```
+  
 
 ## Objects
 
@@ -1495,6 +1662,103 @@
   }
   ```
 
+## Commenting
+
+Well-written code should aim to be self-explanatory.
+Clear, descriptive names for classes, methods, and variables often eliminate the need for additional commentary.
+
+Giving sensible names to types and variables is much better
+than using obscure names that you must then explain through comments.
+
+That said, comments are valuable in situations where the code's intent, context, or reasoning isn't immediately obvious. Use them to clarify **why** something is done, not just **what** is done.
+
+Pay attention to punctuation, spelling, and grammar; it is easier to read
+well-written comments than badly written ones.
+
+> Write comments with future developers in mind — especially those unfamiliar with your work.
+> Generosity here pays off: that future developer might be you.
+
+* <a name="comments--newline"></a>Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  <sup>[[link](#comments--newline)]</sup>
+
+  ```javascript
+  // bad
+  const active = true;  // is current tab
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  function getType() {
+    console.log('fetching type...');
+    // set the default type to 'no type'
+    const type = this.type || 'no type';
+
+    return type;
+  }
+
+  // good
+  function getType() {
+    console.log('fetching type...');
+
+    // set the default type to 'no type'
+    const type = this.type || 'no type';
+
+    return type;
+  }
+  ```
+
+* <a name="comments--spaces"></a>Start all comments with a space to make it easier to read.
+  <sup>[[link](#comments--spaces)]</sup>
+
+  ```javascript
+  // bad
+  //is current tab
+  const active = true;
+
+  // good
+  // is current tab
+  const active = true;
+  ```
+
+
+### Section comments
+
+Use comments to divide files, classes, or methods into logical sections.
+This can significantly improve the readability and flow of longer code blocks,
+helping others quickly understand how a file is structured.
+
+### TODO comments
+
+* <a name="comments-todo"></a>Use `@todo` comments for code that is temporary, a short-term solution, or good-enough but not perfect.
+  <sup>[[link](#comments-todo)]</sup>
+
+TODOs should always be followed by a comment explaining what there is
+to do is required. The main purpose is to have a consistent TODO format that
+can be searched.
+
+```javascript
+// bad
+// TODO
+
+// bad
+// to fix
+
+// good
+// @todo: Use proper namespacing for this constant.
+```
+
+### Deprecation comments
+
+* <a name="comments-deprecation"></a>Use `@deprecated` comments for code that will no-longer be supported in the future, place the comment right above the method or class
+  <sup>[[link](#comments-deprecation)]</sup>
+
+### Commented-out code
+
+* <a name="commented-out-code"></a>Avoid leave commented-out code in our codebase.
+  <sup>[[link](#commented-out-code)]</sup>
+
 
 ## Control Statements
 
@@ -1550,169 +1814,14 @@
   }
   ```
 
-<a name="control-statement--value-selection"></a><a name="control-statements--value-selection"></a>
-- [17.2](#control-statements--value-selection) Don't use selection operators in place of control statements.
-
-  ```javascript
-  // bad
-  !isRunning && startRunning();
-
-  // good
-  if (!isRunning) {
-    startRunning();
-  }
-  ```
-
-
-
-## Comments
-
-<a name="comments--multiline"></a><a name="17.1"></a>
-- [18.1](#comments--multiline) Use `/** ... */` for multiline comments.
-
-  ```javascript
-  // bad
-  // make() returns a new element
-  // based on the passed in tag name
-  //
-  // @param {String} tag
-  // @return {Element} element
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-
-  // good
-  /**
-   * make() returns a new element
-   * based on the passed-in tag name
-   */
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-  ```
-
-<a name="comments--singleline"></a><a name="17.2"></a>
-- [18.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it’s on the first line of a block.
-
-  ```javascript
-  // bad
-  const active = true;  // is current tab
-
-  // good
-  // is current tab
-  const active = true;
-
-  // bad
-  function getType() {
-    console.log('fetching type...');
-    // set the default type to 'no type'
-    const type = this.type || 'no type';
-
-    return type;
-  }
-
-  // good
-  function getType() {
-    console.log('fetching type...');
-
-    // set the default type to 'no type'
-    const type = this.type || 'no type';
-
-    return type;
-  }
-
-  // also good
-  function getType() {
-    // set the default type to 'no type'
-    const type = this.type || 'no type';
-
-    return type;
-  }
-  ```
-
-<a name="comments--spaces"></a>
-- [18.3](#comments--spaces) Start all comments with a space to make it easier to read. eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
-
-  ```javascript
-  // bad
-  //is current tab
-  const active = true;
-
-  // good
-  // is current tab
-  const active = true;
-
-  // bad
-  /**
-   *make() returns a new element
-   *based on the passed-in tag name
-   */
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-
-  // good
-  /**
-   * make() returns a new element
-   * based on the passed-in tag name
-   */
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-  ```
-
-<a name="comments--actionitems"></a><a name="17.3"></a>
-- [18.4](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you’re pointing out a problem that needs to be revisited, or if you’re suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
-
-<a name="comments--fixme"></a><a name="17.4"></a>
-- [18.5](#comments--fixme) Use `// FIXME:` to annotate problems.
-
-  ```javascript
-  class Calculator extends Abacus {
-    constructor() {
-      super();
-
-      // FIXME: shouldn’t use a global here
-      total = 0;
-    }
-  }
-  ```
-
-<a name="comments--todo"></a><a name="17.5"></a>
-- [18.6](#comments--todo) Use `// TODO:` to annotate solutions to problems.
-
-  ```javascript
-  class Calculator extends Abacus {
-    constructor() {
-      super();
-
-      // TODO: total should be configurable by an options param
-      this.total = 0;
-    }
-  }
-  ```
-
-
 
 ## Whitespace
 
-<a name="whitespace--spaces"></a><a name="18.1"></a>
-- [19.1](#whitespace--spaces) Use soft tabs (space character) set to 4 spaces. eslint: [`indent`](https://eslint.org/docs/rules/indent
+* <a name="whitespace--spaces"></a>Use soft tabs (space character) set to 4 spaces. eslint: [`indent`](https://eslint.org/docs/rules/indent
+  <sup>[[link](#whitespace--spaces)]</sup>
 
-<a name="whitespace--before-blocks"></a><a name="18.2"></a>
-- [19.2](#whitespace--before-blocks) Place 1 space before the leading brace. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+* <a name="whitespace--before-blocks"></a>Place 1 space before the leading brace. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+  <sup>[[link](#whitespace--before-blocks)]</sup>
 
   ```javascript
   // bad
@@ -1738,8 +1847,8 @@
   });
   ```
 
-<a name="whitespace--around-keywords"></a><a name="18.3"></a>
-- [19.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
+* <a name="whitespace--around-keywords"></a>Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
+  <sup>[[link](#whitespace--around-keywords)]</sup>
 
   ```javascript
   // bad
@@ -1763,8 +1872,8 @@
   }
   ```
 
-<a name="whitespace--infix-ops"></a><a name="18.4"></a>
-- [19.4](#whitespace--infix-ops) Set off operators with spaces. eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
+* <a name="whitespace--infix-ops"></a>Set off operators with spaces. eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
+  <sup>[[link](#whitespace--infix-ops)]</sup>
 
   ```javascript
   // bad
@@ -1774,81 +1883,8 @@
   const x = y + 5;
   ```
 
-<a name="whitespace--newline-at-end"></a><a name="18.5"></a>
-- [19.5](#whitespace--newline-at-end) End files with a single newline character. eslint: [`eol-last`](https://eslint.org/docs/rules/eol-last)
-
-  ```javascript
-  // bad
-  import { es6 } from './AirbnbStyleGuide';
-    // ...
-  export default es6;
-  ```
-
-  ```javascript
-  // bad
-  import { es6 } from './AirbnbStyleGuide';
-    // ...
-  export default es6;
-  
-  ```
-
-  ```javascript
-  // good
-  import { es6 } from './AirbnbStyleGuide';
-    // ...
-  export default es6;
-  ```
-
-<a name="whitespace--chains"></a><a name="18.6"></a>
-- [19.6](#whitespace--chains) Use indentation when making long method chains (more than 2 method chains). Use a leading dot, which
-  emphasizes that the line is a method call, not a new statement. eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](https://eslint.org/docs/rules/no-whitespace-before-property)
-
-  ```javascript
-  // bad
-  $('#items').find('.selected').highlight().end().find('.open').updateCount();
-
-  // bad
-  $('#items').
-    find('.selected').
-      highlight().
-      end().
-    find('.open').
-      updateCount();
-
-  // good
-  $('#items')
-    .find('.selected')
-      .highlight()
-      .end()
-    .find('.open')
-      .updateCount();
-
-  // bad
-  const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
-      .attr('width', (radius + margin) * 2).append('svg:g')
-      .attr('transform', `translate(${radius + margin}, ${radius + margin})`)
-      .call(tron.led);
-
-  // good
-  const leds = stage.selectAll('.led')
-      .data(data)
-    .enter().append('svg:svg')
-      .classed('led', true)
-      .attr('width', (radius + margin) * 2)
-    .append('svg:g')
-      .attr('transform', `translate(${radius + margin}, ${radius + margin})`)
-      .call(tron.led);
-
-  // good
-  const leds = stage.selectAll('.led').data(data);
-  const svg = leds.enter().append('svg:svg');
-  svg.classed('led', true).attr('width', (radius + margin) * 2);
-  const g = svg.append('svg:g');
-  g.attr('transform', `translate(${radius + margin}, ${radius + margin})`).call(tron.led);
-  ```
-
-<a name="whitespace--after-blocks"></a><a name="18.7"></a>
-- [19.7](#whitespace--after-blocks) Leave a blank line after blocks and before the next statement.
+* <a name="whitespace--after-blocks"></a>Leave a blank line after blocks and before the next statement.
+  <sup>[[link](#whitespace--after-blocks)]</sup>
 
   ```javascript
   // bad
@@ -1870,7 +1906,7 @@
     },
     bar() {
     },
-  };
+  }
   return obj;
 
   // good
@@ -1880,7 +1916,7 @@
 
     bar() {
     },
-  };
+  }
 
   return obj;
 
@@ -1890,7 +1926,7 @@
     },
     function bar() {
     },
-  ];
+  ]
   return arr;
 
   // good
@@ -1900,56 +1936,14 @@
 
     function bar() {
     },
-  ];
+  ]
 
   return arr;
   ```
 
-<a name="whitespace--padded-blocks"></a><a name="18.8"></a>
-- [19.8](#whitespace--padded-blocks) Do not pad your blocks with blank lines. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks)
+* <a name="whitespace--no-multiple-blanks"></a>Do not use multiple blank lines to pad your code. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+  <sup>[[link](#whitespace--no-multiple-blanks)]</sup>
 
-  ```javascript
-  // bad
-  function bar() {
-
-    console.log(foo);
-
-  }
-
-  // bad
-  if (baz) {
-
-    console.log(quux);
-  } else {
-    console.log(foo);
-
-  }
-
-  // bad
-  class Foo {
-
-    constructor(bar) {
-      this.bar = bar;
-    }
-  }
-
-  // good
-  function bar() {
-    console.log(foo);
-  }
-
-  // good
-  if (baz) {
-    console.log(quux);
-  } else {
-    console.log(foo);
-  }
-  ```
-
-<a name="whitespace--no-multiple-blanks"></a>
-- [19.9](#whitespace--no-multiple-blanks) Do not use multiple blank lines to pad your code. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
-
-  <!-- markdownlint-disable MD012 -->
   ```javascript
   // bad
   class Person {
@@ -1961,17 +1955,6 @@
 
 
       this.setAge(birthday);
-    }
-
-
-    setAge(birthday) {
-      const today = new Date();
-
-
-      const age = this.getAge(today, birthday);
-
-
-      this.age = age;
     }
 
 
@@ -1988,120 +1971,38 @@
       this.setAge(birthday);
     }
 
-    setAge(birthday) {
-      const today = new Date();
-      const age = getAge(today, birthday);
-      this.age = age;
-    }
-
     getAge(today, birthday) {
       // ..
     }
   }
   ```
 
-<a name="whitespace--in-parens"></a><a name="18.9"></a>
-- [19.10](#whitespace--in-parens) Do not add spaces inside parentheses. eslint: [`space-in-parens`](https://eslint.org/docs/rules/space-in-parens)
+* <a name="whitespace--in-braces"></a>Add spaces inside curly braces. eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
+  <sup>[[link](#whitespace--in-braces)]</sup>
 
   ```javascript
   // bad
-  function bar( foo ) {
-    return foo;
-  }
+  const foo = {clark: 'kent'}
 
   // good
-  function bar(foo) {
-    return foo;
-  }
-
-  // bad
-  if ( foo ) {
-    console.log(foo);
-  }
-
-  // good
-  if (foo) {
-    console.log(foo);
-  }
+  const foo = { clark: 'kent' }
   ```
 
-<a name="whitespace--in-brackets"></a><a name="18.10"></a>
-- [19.11](#whitespace--in-brackets) Do not add spaces inside brackets. eslint: [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
-
-  ```javascript
-  // bad
-  const foo = [ 1, 2, 3 ];
-  console.log(foo[ 0 ]);
-
-  // good
-  const foo = [1, 2, 3];
-  console.log(foo[0]);
-  ```
-
-<a name="whitespace--in-braces"></a><a name="18.11"></a>
-- [19.12](#whitespace--in-braces) Add spaces inside curly braces. eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
-
-  ```javascript
-  // bad
-  const foo = {clark: 'kent'};
-
-  // good
-  const foo = { clark: 'kent' };
-  ```
-
-<a name="whitespace--max-len"></a><a name="18.12"></a>
-- [19.13](#whitespace--max-len) Avoid having lines of code that are longer than 100 characters (including whitespace). Note: per [above](#strings--line-length), long strings are exempt from this rule, and should not be broken up. eslint: [`max-len`](https://eslint.org/docs/rules/max-len)
-
-  > Why? This ensures readability and maintainability.
-
-  ```javascript
-  // bad
-  const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
-
-  // bad
-  $.ajax({ method: 'POST', url: 'https://airbnb.com/', data: { name: 'John' } }).done(() => console.log('Congratulations!')).fail(() => console.log('You have failed this city.'));
-
-  // good
-  const foo = jsonData
-    && jsonData.foo
-    && jsonData.foo.bar
-    && jsonData.foo.bar.baz
-    && jsonData.foo.bar.baz.quux
-    && jsonData.foo.bar.baz.quux.xyzzy;
-
-  // better
-  const foo = jsonData
-    ?.foo
-    ?.bar
-    ?.baz
-    ?.quux
-    ?.xyzzy;
-
-  // good
-  $.ajax({
-    method: 'POST',
-    url: 'https://airbnb.com/',
-    data: { name: 'John' },
-  })
-    .done(() => console.log('Congratulations!'))
-    .fail(() => console.log('You have failed this city.'));
-  ```
-
-<a name="whitespace--block-spacing"></a>
-- [19.14](#whitespace--block-spacing) Require consistent spacing inside an open block token and the next token on the same line. This rule also enforces consistent spacing inside a close block token and previous token on the same line. eslint: [`block-spacing`](https://eslint.org/docs/rules/block-spacing)
+* <a name="whitespace--block-spacing"></a>Use spacing inside an inline blocks
+  <sup>[[link](#whitespace--block-spacing)]</sup>
 
   ```javascript
   // bad
   function foo() {return true;}
-  if (foo) { bar = 0;}
+  if (foo) {bar = 0;}
 
   // good
   function foo() { return true; }
   if (foo) { bar = 0; }
   ```
 
-<a name="whitespace--comma-spacing"></a>
-- [19.15](#whitespace--comma-spacing) Avoid spaces before commas and require a space after commas. eslint: [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
+* <a name="whitespace--comma-spacing"></a>Avoid spaces before commas and require a space after commas. eslint: [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
+  <sup>[[link](#whitespace--comma-spacing)]</sup>
 
   ```javascript
   // bad
@@ -2113,8 +2014,8 @@
   const arr = [1, 2];
   ```
 
-<a name="whitespace--computed-property-spacing"></a>
-- [19.16](#whitespace--computed-property-spacing) Enforce spacing inside of computed property brackets. eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
+* <a name="whitespace--computed-property-spacing"></a>Enforce spacing inside of computed property brackets. eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
+  <sup>[[link](#whitespace--computed-property-spacing)]</sup>
 
   ```javascript
   // bad
@@ -2130,8 +2031,8 @@
   obj[foo[bar]]
   ```
 
-<a name="whitespace--func-call-spacing"></a>
-- [19.17](#whitespace--func-call-spacing) Avoid spaces between functions and their invocations. eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
+* <a name="whitespace--func-call-spacing"></a>Avoid spaces between functions and their invocations. eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
+  <sup>[[link](#whitespace--func-call-spacing)]</sup>
 
   ```javascript
   // bad
@@ -2144,8 +2045,8 @@
   func();
   ```
 
-<a name="whitespace--key-spacing"></a>
-- [19.18](#whitespace--key-spacing) Enforce spacing between keys and values in object literal properties. eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
+* <a name="whitespace--key-spacing"></a>Enforce spacing between keys and values in object literal properties. eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
+  <sup>[[link](#whitespace--key-spacing)]</sup>
 
   ```javascript
   // bad
@@ -2156,13 +2057,12 @@
   const obj = { foo: 42 };
   ```
 
-<a name="whitespace--no-trailing-spaces"></a>
-- [19.19](#whitespace--no-trailing-spaces) Avoid trailing spaces at the end of lines. eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
+* <a name="whitespace--no-trailing-spaces"></a>Avoid trailing spaces at the end of lines. eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
+  <sup>[[link](#whitespace--no-trailing-spaces)]</sup>
 
-<a name="whitespace--no-multiple-empty-lines"></a>
-- [19.20](#whitespace--no-multiple-empty-lines) Avoid multiple empty lines, only allow one newline at the end of files, and avoid a newline at the beginning of files. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+* <a name="whitespace--no-multiple-empty-lines"></a>Avoid multiple empty lines, only allow one newline at the end of files, and avoid a newline at the beginning of files. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+  <sup>[[link](#whitespace--no-multiple-empty-lines)]</sup>
 
-  <!-- markdownlint-disable MD012 -->
   ```javascript
   // bad - multiple empty lines
   const x = 1;
@@ -2185,14 +2085,12 @@
   const y = 2;
 
   ```
-  <!-- markdownlint-enable MD012 -->
-
 
 
 ## Commas
 
-<a name="commas--leading-trailing"></a><a name="19.1"></a>
-- [20.1](#commas--leading-trailing) Leading commas: **Nope.** eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style)
+* <a name="commas--leading-trailing"></a>Avoid leading commas. eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style)
+  <sup>[[link](#commas--leading-trailing)]</sup>
 
   ```javascript
   // bad
@@ -2226,108 +2124,11 @@
   };
   ```
 
-<a name="commas--dangling"></a><a name="19.2"></a>
-- [20.2](#commas--dangling) Additional trailing comma: **Yup.** eslint: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
-
-  > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don’t have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
-
-  ```diff
-  // bad - git diff without trailing comma
-  const hero = {
-       firstName: 'Florence',
-  -    lastName: 'Nightingale'
-  +    lastName: 'Nightingale',
-  +    inventorOf: ['coxcomb chart', 'modern nursing']
-  };
-
-  // good - git diff with trailing comma
-  const hero = {
-       firstName: 'Florence',
-       lastName: 'Nightingale',
-  +    inventorOf: ['coxcomb chart', 'modern nursing'],
-  };
-  ```
-
-  ```javascript
-  // bad
-  const hero = {
-    firstName: 'Dana',
-    lastName: 'Scully'
-  };
-
-  const heroes = [
-    'Batman',
-    'Superman'
-  ];
-
-  // good
-  const hero = {
-    firstName: 'Dana',
-    lastName: 'Scully',
-  };
-
-  const heroes = [
-    'Batman',
-    'Superman',
-  ];
-
-  // bad
-  function createHero(
-    firstName,
-    lastName,
-    inventorOf
-  ) {
-    // does nothing
-  }
-
-  // good
-  function createHero(
-    firstName,
-    lastName,
-    inventorOf,
-  ) {
-    // does nothing
-  }
-
-  // good (note that a comma must not appear after a "rest" element)
-  function createHero(
-    firstName,
-    lastName,
-    inventorOf,
-    ...heroArgs
-  ) {
-    // does nothing
-  }
-
-  // bad
-  createHero(
-    firstName,
-    lastName,
-    inventorOf
-  );
-
-  // good
-  createHero(
-    firstName,
-    lastName,
-    inventorOf,
-  );
-
-  // good (note that a comma must not appear after a "rest" element)
-  createHero(
-    firstName,
-    lastName,
-    inventorOf,
-    ...heroArgs
-  );
-  ```
-
-
 
 ## Semicolons
 
-<a name="semicolons--required"></a><a name="20.1"></a>
-- [21.1](#semicolons--required) **Yup.** eslint: [`semi`](https://eslint.org/docs/rules/semi)
+* <a name="semicolons--required"></a>It's a better approach to use semicolons. eslint: [`semi`](https://eslint.org/docs/rules/semi)
+  <sup>[[link](#semicolons--required)]</sup>
 
   > Why? When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) to determine whether it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
 
@@ -2370,351 +2171,4 @@
   }
   ```
 
-  [Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214#7365214).
-
-
-
-## Type Casting & Coercion
-
-<a name="coercion--explicit"></a><a name="21.1"></a>
-- [22.1](#coercion--explicit) Perform type coercion at the beginning of the statement.
-
-<a name="coercion--strings"></a><a name="21.2"></a>
-- [22.2](#coercion--strings) Strings: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
-
-  ```javascript
-  // => this.reviewScore = 9;
-
-  // bad
-  const totalScore = new String(this.reviewScore); // typeof totalScore is "object" not "string"
-
-  // bad
-  const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
-
-  // bad
-  const totalScore = this.reviewScore.toString(); // isn’t guaranteed to return a string
-
-  // good
-  const totalScore = String(this.reviewScore);
-  ```
-
-<a name="coercion--numbers"></a><a name="21.3"></a>
-- [22.3](#coercion--numbers) Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](https://eslint.org/docs/rules/radix) [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
-
-  > Why? The `parseInt` function produces an integer value dictated by interpretation of the contents of the string argument according to the specified radix. Leading whitespace in string is ignored. If radix is `undefined` or `0`, it is assumed to be `10` except when the number begins with the character pairs `0x` or `0X`, in which case a radix of 16 is assumed. This differs from ECMAScript 3, which merely discouraged (but allowed) octal interpretation. Many implementations have not adopted this behavior as of 2013. And, because older browsers must be supported, always specify a radix.
-
-  ```javascript
-  const inputValue = '4';
-
-  // bad
-  const val = new Number(inputValue);
-
-  // bad
-  const val = +inputValue;
-
-  // bad
-  const val = inputValue >> 0;
-
-  // bad
-  const val = parseInt(inputValue);
-
-  // good
-  const val = Number(inputValue);
-
-  // good
-  const val = parseInt(inputValue, 10);
-  ```
-
-<a name="coercion--comment-deviations"></a><a name="21.4"></a>
-- [22.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://web.archive.org/web/20200414205431/https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you’re doing.
-
-  ```javascript
-  // good
-  /**
-   * parseInt was the reason my code was slow.
-   * Bitshifting the String to coerce it to a
-   * Number made it a lot faster.
-   */
-  const val = inputValue >> 0;
-  ```
-
-<a name="coercion--bitwise"></a><a name="21.5"></a>
-- [22.5](#coercion--bitwise) **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](https://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](https://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
-
-  ```javascript
-  2147483647 >> 0; // => 2147483647
-  2147483648 >> 0; // => -2147483648
-  2147483649 >> 0; // => -2147483647
-  ```
-
-<a name="coercion--booleans"></a><a name="21.6"></a>
-- [22.6](#coercion--booleans) Booleans: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
-
-  ```javascript
-  const age = 0;
-
-  // bad
-  const hasAge = new Boolean(age);
-
-  // good
-  const hasAge = Boolean(age);
-
-  // best
-  const hasAge = !!age;
-  ```
-
-
-## Naming Conventions
-
-<a name="naming--descriptive"></a><a name="22.1"></a>
-- [23.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming. eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
-
-  ```javascript
-  // bad
-  function q() {
-    // ...
-  }
-
-  // good
-  function query() {
-    // ...
-  }
-  ```
-
-<a name="naming--camelCase"></a><a name="22.2"></a>
-- [23.2](#naming--camelCase) Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase)
-
-  ```javascript
-  // bad
-  const OBJEcttsssss = {};
-  const this_is_my_object = {};
-  function c() {}
-
-  // good
-  const thisIsMyObject = {};
-  function thisIsMyFunction() {}
-  ```
-
-<a name="naming--PascalCase"></a><a name="22.3"></a>
-- [23.3](#naming--PascalCase) Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap)
-
-  ```javascript
-  // bad
-  function user(options) {
-    this.name = options.name;
-  }
-
-  const bad = new user({
-    name: 'nope',
-  });
-
-  // good
-  class User {
-    constructor(options) {
-      this.name = options.name;
-    }
-  }
-
-  const good = new User({
-    name: 'yup',
-  });
-  ```
-
-<a name="naming--leading-underscore"></a><a name="22.4"></a>
-- [23.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle)
-
-  > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
-
-  ```javascript
-  // bad
-  this.__firstName__ = 'Panda';
-  this.firstName_ = 'Panda';
-  this._firstName = 'Panda';
-
-  // good
-  this.firstName = 'Panda';
-
-  // good, in environments where WeakMaps are available
-  // see https://compat-table.github.io/compat-table/es6/#test-WeakMap
-  const firstNames = new WeakMap();
-  firstNames.set(this, 'Panda');
-  ```
-
-<a name="naming--self-this"></a><a name="22.5"></a>
-- [23.5](#naming--self-this) Don’t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
-
-  ```javascript
-  // bad
-  function foo() {
-    const self = this;
-    return function () {
-      console.log(self);
-    };
-  }
-
-  // bad
-  function foo() {
-    const that = this;
-    return function () {
-      console.log(that);
-    };
-  }
-
-  // good
-  function foo() {
-    return () => {
-      console.log(this);
-    };
-  }
-  ```
-
-<a name="naming--filename-matches-export"></a><a name="22.6"></a>
-- [23.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
-
-  ```javascript
-  // file 1 contents
-  class CheckBox {
-    // ...
-  }
-  export default CheckBox;
-
-  // file 2 contents
-  export default function fortyTwo() { return 42; }
-
-  // file 3 contents
-  export default function insideDirectory() {}
-
-  // in some other file
-  // bad
-  import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
-  import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
-  import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
-
-  // bad
-  import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
-  import forty_two from './forty_two'; // snake_case import/filename, camelCase export
-  import inside_directory from './inside_directory'; // snake_case import, camelCase export
-  import index from './inside_directory/index'; // requiring the index file explicitly
-  import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
-
-  // good
-  import CheckBox from './CheckBox'; // PascalCase export/import/filename
-  import fortyTwo from './fortyTwo'; // camelCase export/import/filename
-  import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
-  // ^ supports both insideDirectory.js and insideDirectory/index.js
-  ```
-
-<a name="naming--camelCase-default-export"></a><a name="22.7"></a>
-- [23.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function’s name.
-
-  ```javascript
-  function makeStyleGuide() {
-    // ...
-  }
-
-  export default makeStyleGuide;
-  ```
-
-<a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
-- [23.8](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
-
-  ```javascript
-  const AirbnbStyleGuide = {
-    es6: {
-    },
-  };
-
-  export default AirbnbStyleGuide;
-  ```
-
-<a name="naming--Acronyms-and-Initialisms"></a>
-- [23.9](#naming--Acronyms-and-Initialisms) Acronyms and initialisms should always be all uppercased, or all lowercased.
-
-  > Why? Names are for readability, not to appease a computer algorithm.
-
-  ```javascript
-  // bad
-  import SmsContainer from './containers/SmsContainer';
-
-  // bad
-  const HttpRequests = [
-    // ...
-  ];
-
-  // good
-  import SMSContainer from './containers/SMSContainer';
-
-  // good
-  const HTTPRequests = [
-    // ...
-  ];
-
-  // also good
-  const httpRequests = [
-    // ...
-  ];
-
-  // best
-  import TextMessageContainer from './containers/TextMessageContainer';
-
-  // best
-  const requests = [
-    // ...
-  ];
-  ```
-
-<a name="naming--uppercase"></a>
-- [23.10](#naming--uppercase) You may optionally uppercase a constant only if it (1) is exported, (2) is a `const` (it can not be reassigned), and (3) the programmer can trust it (and its nested properties) to never change.
-
-  > Why? This is an additional tool to assist in situations where the programmer would be unsure if a variable might ever change. UPPERCASE_VARIABLES are letting the programmer know that they can trust the variable (and its properties) not to change.
-    - What about all `const` variables? - This is unnecessary, so uppercasing should not be used for constants within a file. It should be used for exported constants however.
-    - What about exported objects? - Uppercase at the top level of export (e.g. `EXPORTED_OBJECT.key`) and maintain that all nested properties do not change.
-
-  ```javascript
-  // bad
-  const PRIVATE_VARIABLE = 'should not be unnecessarily uppercased within a file';
-
-  // bad
-  export const THING_TO_BE_CHANGED = 'should obviously not be uppercased';
-
-  // bad
-  export let REASSIGNABLE_VARIABLE = 'do not use let with uppercase variables';
-
-  // ---
-
-  // allowed but does not supply semantic value
-  export const apiKey = 'SOMEKEY';
-
-  // better in most cases
-  export const API_KEY = 'SOMEKEY';
-
-  // ---
-
-  // bad - unnecessarily uppercases key while adding no semantic value
-  export const MAPPING = {
-    KEY: 'value'
-  };
-
-  // good
-  export const MAPPING = {
-    key: 'value',
-  };
-  ```
-
-
-## Accessors
-
-<a name="accessors--boolean-prefix"></a><a name="23.3"></a>
-- [24.3](#accessors--boolean-prefix) If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
-
-  ```javascript
-  // bad
-  if (!dragon.age()) {
-    return false;
-  }
-
-  // good
-  if (!dragon.hasAge()) {
-    return false;
-  }
-  ```
+  [Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214#7365214)
