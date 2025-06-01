@@ -8,7 +8,7 @@ const MODE = {
     DEFAULT: 'default'
 }
 
-// Store
+// Component
 export default function COMPONENT_NAME(props) {
     const { t } = I18n;
 

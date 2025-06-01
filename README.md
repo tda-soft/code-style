@@ -49,14 +49,17 @@ It is designed to ensure code consistency, readability, maintainability, and eas
     - [Commas](./sections/javascript.md#commas)
     - [Semicolons](./sections/javascript.md#semicolons)
 1. [React.js](./sections/react.md)
-    - Functional Components
-    - Hooks
-    - State Management
-    - Component Composition
-    - Props and Type Checking
-    - Styling Conventions
-    - Folder Structure
-    - Code Examples
+   - [Basic Rules](./sections/react.md#basic-rules)
+   - [Mixins](./sections/react.md#mixins)
+   - [Naming Conventions](./sections/react.md#naming-conventions)
+   - [Alignment](./sections/react.md#alignment)
+   - [Quotes](./sections/react.md#quotes)
+   - [Spacing](./sections/react.md#spacing)
+   - [Props](./sections/react.md#props)
+   - [Parentheses](./sections/react.md#parentheses)
+   - [Tags](./sections/react.md#tags)
+   - [Methods](./sections/react.md#methods)
+   - [File Structure](./sections/react.md#file-structure)
 1. [Testing Standards](./sections/testing.md)
     - Rails: Minitest
     - JavaScript/React: Jest, React Testing Library
