@@ -358,6 +358,9 @@
   8. Rendering
   ```
 
+* Eliminate any sections that do not contain content.
+* Keep related methods and variables grouped together; do not insert unrelated items between them.
+
 ### Example
 
 ```jsx

@@ -2,6 +2,9 @@
 
 The following principles apply to all technologies, programming languages, and frameworks used.
 
+Clean code is readable, understandable, and maintainable. It minimizes bugs, enhances team collaboration, and ensures long-term project scalability. This document summarizes key clean code principles and practices for writing efficient and effective code.
+
+
 ## Table of Contents
 1. [Naming Conventions](#naming-conventions)
 1. [Consistency](#consistency)
@@ -244,6 +247,12 @@ helping others quickly understand how a file is structured.
 
 
 ## Code Duplication
+
+* DRY (Don’t Repeat Yourself)
+
+  Eliminate duplicate code by abstracting common logic into reusable functions.
+
 * Avoid copying and pasting code
 * Extract common functionality into reusable functions
 * Use shared utilities for common operations
+* Improve readability, remove redundancy, and simplify logic.
