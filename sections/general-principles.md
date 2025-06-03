@@ -57,10 +57,10 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     active_user = User.where(active: true)
     ```
 
-* <a name="boolean-prefixes"></a>Prefix boolean variables and methods with `is_` or `has_`.
+* <a name="boolean-prefixes"></a>Prefix boolean variables and methods with `is` or `has`.
   <sup>[[link](#boolean-prefixes)]</sup>
 
-    ```
+    ```javascript
     # bad
     valid = true
 
@@ -79,7 +79,7 @@ Choose clear, descriptive, and meaningful names for all identifiers in your code
     authorized_user_uuids = [...]
     ```
 
-* <a name="verb-method-names"></a>For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method supposed to do.
+* <a name="verb-method-names"></a>For functions / methods / commands use **verbs** or short-phrase with **adjectives** that will explain what this method is supposed to do.
   <sup>[[link](#verb-method-names)]</sup>
 
     ```
