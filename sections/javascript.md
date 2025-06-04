@@ -2173,7 +2173,7 @@ can be searched.
 
   [Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214#7365214)
 
-* Avoid adding semicolons after brakets
+* Avoid adding semicolons after brackets
 
   ```javascript
   // bad
